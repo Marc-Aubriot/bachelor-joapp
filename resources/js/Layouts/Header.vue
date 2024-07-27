@@ -22,17 +22,21 @@ export default {
 
         <!-- left nav basket and profile -->
         <div class="flex gap-4 ml-4 items-center grow basis-0">
-            <img 
-                src="../../assets/shopping-basket.svg" 
-                alt="panier d'achat" 
-                class="h-45 w-45 cursor-pointer"
-            >
+            <ResponsiveNavLink href="/">
+                <img 
+                    src="../../assets/shopping-basket.svg" 
+                    alt="panier d'achat" 
+                    class="h-45 w-45 cursor-pointer"
+                >
+            </ResponsiveNavLink>
 
-            <img 
-                src="../../assets/account-circle.svg" 
-                alt="avatar du profil" 
-                class="h-45 w-45 cursor-pointer"
-            >
+            <ResponsiveNavLink href="/">
+                <img 
+                    src="../../assets/account-circle.svg" 
+                    alt="avatar du profil" 
+                    class="h-45 w-45 cursor-pointer"
+                >
+            </ResponsiveNavLink>
 
             <ul class="hidden gap-6 md:flex">
                 <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
@@ -46,11 +50,13 @@ export default {
         
         <!-- center logo -->
         <div class="h-120 flex justify-center">
-            <img 
-                src="../../assets/app-logo.png" 
-                alt="logo" 
-                class="h-full w-auto cursor-pointer"
-            >
+            <ResponsiveNavLink href="/">
+                <img 
+                    src="../../assets/app-logo.png" 
+                    alt="logo" 
+                    class="h-full w-auto cursor-pointer"
+                >
+            </ResponsiveNavLink>
         </div>
 
         <!-- right nav links -->
