@@ -12,8 +12,8 @@ export default defineConfig({
         vue({
             template: {
                 transformAssetUrls: {
-                    base: null,               //  pass this to "true" for production
-                    includeAbsolute: false,      //  pass this to true for production
+                    base: "test",               //  pass this to "true" for production
+                    includeAbsolute: true,      //  pass this to true for production
                 },
             },
         }),
