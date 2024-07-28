@@ -24,7 +24,7 @@ export default {
         <div class="flex gap-4 ml-4 items-center grow basis-0">
             <ResponsiveNavLink href="/">
                 <img 
-                    src="../../assets/shopping-basket.svg" 
+                    src="../../../public/assets/shopping-basket.svg" 
                     alt="panier d'achat" 
                     class="h-45 w-45 cursor-pointer"
                 >
@@ -32,7 +32,7 @@ export default {
 
             <ResponsiveNavLink href="/">
                 <img 
-                    src="../../assets/account-circle.svg" 
+                    src="../../../public/assets/account-circle.svg" 
                     alt="avatar du profil" 
                     class="h-45 w-45 cursor-pointer"
                 >
@@ -52,7 +52,7 @@ export default {
         <div class="h-120 flex justify-center">
             <ResponsiveNavLink href="/">
                 <img 
-                    src="../../assets/app-logo.png" 
+                    src="../../../public/assets/app-logo.png" 
                     alt="logo" 
                     class="h-full w-auto cursor-pointer"
                 >
@@ -63,14 +63,14 @@ export default {
         <div class="flex justify-end items-center grow basis-0">
             <img 
                 v-if="hamburgerMenuIsOpen"
-                src="../../assets/close-menu.svg" 
+                src="../../../public/assets/close-menu.svg" 
                 alt="menu de navigation"  
                 class="h-45 w-45 cursor-pointer mr-4 md:hidden"
                 @click="hamburgerMenuIsOpen = !hamburgerMenuIsOpen"
             >
             <img 
                 v-else
-                src="../../assets/hamburger-menu.svg" 
+                src="../../../public/assets/hamburger-menu.svg" 
                 alt="menu de navigation"  
                 class="h-45 w-45 cursor-pointer mr-4 md:hidden"
                 @click="hamburgerMenuIsOpen = !hamburgerMenuIsOpen"

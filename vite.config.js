@@ -12,10 +12,11 @@ export default defineConfig({
         vue({
             template: {
                 transformAssetUrls: {
-                    base: null,
-                    includeAbsolute: false,
+                    base: null,               //  pass this to "true" for production
+                    includeAbsolute: false,      //  pass this to true for production
                 },
             },
         }),
+        
     ],
 });
