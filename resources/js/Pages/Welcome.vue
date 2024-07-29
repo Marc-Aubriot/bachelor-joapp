@@ -29,11 +29,13 @@ function handleImageError() {
 </script>
 
 <template>
-    
+
     <Head title="Accueil"></Head>
 
     <Header></Header>
     
+    
+
     <Footer></Footer> 
    
 </template>

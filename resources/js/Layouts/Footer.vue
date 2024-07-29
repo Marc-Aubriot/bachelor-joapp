@@ -21,7 +21,7 @@ export default {
                     <ResponsiveNavLink href="/">CGV</ResponsiveNavLink>
                 </li>
                 <li class="text-white text-sm xl:text-xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
-                    <ResponsiveNavLink href="/billets">CGU</ResponsiveNavLink>
+                    <ResponsiveNavLink href="/">CGU</ResponsiveNavLink>
                 </li>
                 <li class="text-white text-sm xl:text-xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
                     <ResponsiveNavLink href="/">Politique de confidentialité</ResponsiveNavLink>
@@ -34,10 +34,18 @@ export default {
         </nav>
 
         <div class="flex justify-between w-1/2  md:w-1/4">
-            <img src="../../../public/assets/facebook-logo.svg" alt="logo facebook" class="cursor-pointer">
-            <img src="../../../public/assets/youtube-logo.svg" alt="logo youtube" class="cursor-pointer">
-            <img src="../../../public/assets/x-logo.svg" alt="logo x twitter" class="cursor-pointer">
-            <img src="../../../public/assets/instagram-logo.svg" alt="logo instagram" class="cursor-pointer">
+            <ResponsiveNavLink href="/">
+                <img src="../../../public/assets/facebook-logo.svg" alt="logo facebook" class="cursor-pointer">
+            </ResponsiveNavLink>
+            <ResponsiveNavLink href="/">
+                <img src="../../../public/assets/youtube-logo.svg" alt="logo youtube" class="cursor-pointer">
+            </ResponsiveNavLink>
+            <ResponsiveNavLink href="/">
+                <img src="../../../public/assets/x-logo.svg" alt="logo x twitter" class="cursor-pointer">
+            </ResponsiveNavLink>
+            <ResponsiveNavLink href="/">
+                <img src="../../../public/assets/instagram-logo.svg" alt="logo instagram" class="cursor-pointer">
+            </ResponsiveNavLink>
         </div>
 
         <p class="text-white text-sm xl:text-xl">Copyrights 2024 MarcAu</p>
