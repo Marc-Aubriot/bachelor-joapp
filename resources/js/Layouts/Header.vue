@@ -18,7 +18,7 @@ export default {
 
 <template>
 
-    <div class="bg-gradient-to-b from-light-blue to-heavy-blue flex h-120 justify-between">
+    <header class="bg-gradient-to-b from-light-blue to-heavy-blue flex h-120 justify-between">
 
         <!-- left nav basket and profile -->
         <div class="flex gap-4 ml-4 items-center grow basis-0">
@@ -60,7 +60,7 @@ export default {
         </div>
 
         <!-- right nav links -->
-        <div class="flex justify-end items-center grow basis-0">
+        <nav class="flex justify-end items-center grow basis-0">
             <img 
                 v-if="hamburgerMenuIsOpen"
                 src="../../../public/assets/close-menu.svg" 
@@ -94,11 +94,11 @@ export default {
                 </li>
             </ul>
 
-        </div>
+        </nav>
 
-    </div>
+    </header>
 
-    <div v-if="hamburgerMenuIsOpen == true" class="bg-gradient-to-b from-heavy-blue to-light-blue h-screen md:hidden">
+    <nav v-if="hamburgerMenuIsOpen == true" class="bg-gradient-to-b from-heavy-blue to-light-blue h-screen md:hidden">
         <ul class="flex flex-col md:flex-row justify-evenly items-center h-full">
             <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
                 <ResponsiveNavLink href="/">Relais de la flamme</ResponsiveNavLink>
@@ -122,6 +122,6 @@ export default {
                 <ResponsiveNavLink href="/">Langues</ResponsiveNavLink>
             </li>
         </ul>
-    </div>
+    </nav>
     
 </template>
