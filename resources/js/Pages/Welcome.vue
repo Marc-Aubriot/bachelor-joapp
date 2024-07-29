@@ -2,6 +2,9 @@
 import { Head, Link } from '@inertiajs/vue3';
 import Header from '@/Layouts/Header.vue';
 import Footer from '@/Layouts/Footer.vue';
+import Carousel from '@/Components/Carousel.vue';
+
+const imgList = ["bercy", "versailles", "vaires", "st-denis", "grand-palais"];
 
 defineProps({
     canLogin: {
@@ -15,6 +18,10 @@ defineProps({
         required: true,
     },
     phpVersion: {
+        type: String,
+        required: true,
+    },
+    assetsURL: {
         type: String,
         required: true,
     },
@@ -32,10 +39,18 @@ function handleImageError() {
 
     <Head title="Accueil"></Head>
 
-    <Header></Header>
-    
-    
+    <div class="h-screen">
 
-    <Footer></Footer> 
+        <Header></Header>
+        
+        <main class="h-5/6">
+
+            <Carousel :imgNameList=imgList :assetsURL="assetsURL"></Carousel>
+
+        </main>
+
+        <Footer></Footer> 
+
+    </div>
    
 </template>
