@@ -25,8 +25,8 @@ export default {
     methods: {
         //  load img 
         getImgPath(img) {
-            if (this.assetsURL) return `${this.assetsURL}/${img}.jpg`;
-            else return `http://[::1]:5173/public/assets/${img}.jpg`;
+            if (this.assetsURL) return `${this.assetsURL}/${img}`;
+            else return `http://[::1]:5173/public/assets/${img}`;
         },
 
         //  load previous image index
@@ -49,7 +49,7 @@ export default {
 
 <template>
 
-    <div v-if="imgNameList" class="relative h-full w-full overflow-hidden">
+    <div v-if="imgNameList" class="relative h-screen w-full overflow-hidden">
 
         <!-- carousel imgs -->
         <img 
