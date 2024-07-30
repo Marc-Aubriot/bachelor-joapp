@@ -39,10 +39,10 @@ export default {
             </ResponsiveNavLink>
 
             <ul class="hidden gap-6 md:flex">
-                <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-white text-sm xl:text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
                     <ResponsiveNavLink href="/">Relais de la flamme</ResponsiveNavLink>
                 </li>
-                <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-white text-sm xl:text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
                     <ResponsiveNavLink href="/">Calendrier</ResponsiveNavLink>
                 </li>
             </ul>
@@ -77,19 +77,19 @@ export default {
             >
 
             <ul class="hidden md:flex justify-between mr-8 gap-6">
-                <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-white text-sm xl:text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
                     <ResponsiveNavLink href="/">Accueil</ResponsiveNavLink>
                 </li>
-                <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-white text-sm xl:text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
                     <ResponsiveNavLink href="/billets">Billets</ResponsiveNavLink>
                 </li>
-                <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-white text-sm xl:text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
                     <ResponsiveNavLink href="/">Boutique</ResponsiveNavLink>
                 </li>
-                <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-white text-sm xl:text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
                     <ResponsiveNavLink href="/">Hospitalité</ResponsiveNavLink>
                 </li>
-                <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-white text-sm xl:text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
                     <ResponsiveNavLink href="/">Langues</ResponsiveNavLink>
                 </li>
             </ul>

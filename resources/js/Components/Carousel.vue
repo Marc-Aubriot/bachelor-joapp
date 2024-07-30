@@ -3,10 +3,13 @@ export default {
     name: 'Carousel',
 
     props: {
+        //  list of image name
         imgNameList: {
             type: Array,
             default: null,
         },
+
+        //  base url for assets
         assetsURL: {
             type: String,
             default: null
@@ -15,24 +18,28 @@ export default {
 
     data() {
         return {
-            currentIndex: 2,
+            currentIndex: 2,    //  index of current image
         }
     },
 
     methods: {
+        //  load img 
         getImgPath(img) {
             if (this.assetsURL) return `${this.assetsURL}/${img}.jpg`;
             else return `http://[::1]:5173/public/assets/${img}.jpg`;
         },
 
+        //  load previous image index
         previousImg() {
             if (this.currentIndex > 0) this.currentIndex--;
         },
 
+        //  load next image index
         nextImg() {
             if(this.currentIndex < this.imgNameList.length-1) this.currentIndex++;
         },
 
+        //  load image index
         loadImgByIndex(index) {
             this.currentIndex = index;
         },
@@ -42,43 +49,15 @@ export default {
 
 <template>
 
-    <div v-if="imgNameList" class="relative h-full w-full">
+    <div v-if="imgNameList" class="relative h-full w-full overflow-hidden">
 
         <!-- carousel imgs -->
-        <img :src="getImgPath(imgNameList[0])" alt="photo de Bercy" 
-            :class="currentIndex == 0 ?
+        <img 
+            v-for="(img, index) in imgNameList"
+            :src="getImgPath(img)" alt="photo de Bercy" 
+            :class="currentIndex == index ?
                 'absolute top-0 object-cover h-full w-full duration-700 ease-in-out'
-                : 'absolute top-0 object-cover h-full w-full duration-700 ease-in-out -translate-x-full'"
-        >
-
-        <img :src="getImgPath(imgNameList[1])" alt="photo de Bercy" 
-            :class="currentIndex == 1 ?
-                'absolute top-0 object-cover h-full w-full duration-700 ease-in-out'
-                : currentIndex < 1 ? 
-                    'absolute top-0 object-cover h-full w-full  duration-700 ease-in-out translate-x-full'
-                    :'absolute top-0 object-cover h-full w-full  duration-700 ease-in-out -translate-x-full'"
-        >
-
-        <img :src="getImgPath(imgNameList[2])" alt="photo de Bercy" 
-            :class="currentIndex == 2 ?
-                'absolute top-0 object-cover h-full w-full duration-700 ease-in-out'
-                : currentIndex < 2 ? 
-                    'absolute top-0 object-cover h-full w-full  duration-700 ease-in-out translate-x-full'
-                    :'absolute top-0 object-cover h-full w-full  duration-700 ease-in-out -translate-x-full'"
-        >
-
-        <img :src="getImgPath(imgNameList[3])" alt="photo de Bercy" 
-            :class="currentIndex == 3 ?
-                'absolute top-0 object-cover h-full w-full duration-700 ease-in-out'
-                : currentIndex < 3 ? 
-                    'absolute top-0 object-cover h-full w-full  duration-700 ease-in-out translate-x-full'
-                    :'absolute top-0 object-cover h-full w-full  duration-700 ease-in-out -translate-x-full'"
-        >
-
-        <img :src="getImgPath(imgNameList[4])" alt="photo de Bercy" 
-            :class="currentIndex == 4 ?
-                'absolute top-0 object-cover h-full w-full duration-700 ease-in-out'
-                : currentIndex < 4 ? 
+                : currentIndex < index ? 
                     'absolute top-0 object-cover h-full w-full  duration-700 ease-in-out translate-x-full'
                     :'absolute top-0 object-cover h-full w-full  duration-700 ease-in-out -translate-x-full'"
         >
