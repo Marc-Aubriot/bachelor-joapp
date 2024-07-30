@@ -18,7 +18,9 @@ class WelcomeTest extends DuskTestCase
                     ->assertSourceHas('grand-palais.jpg')
                     ->assertSourceHas('arrow-left-2.svg')
                     ->assertSourceHas('arrow-right-2.svg')
-                    ->assertSourceHas('circle.svg');
+                    ->assertSourceHas('circle.svg')
+                    ->assertSourceHas('little-arrow-left.svg')
+                    ->assertSourceHas('little-arrow-right.svg');
         });
     }
 }

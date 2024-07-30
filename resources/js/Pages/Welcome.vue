@@ -162,11 +162,15 @@ export default {
 
     <div class="h-fit w-full">
 
-        <Header></Header>
-        
-        <main class="h-fit w-full">
+        <div class="h-screen relative">
+
+            <Header></Header>
 
             <Carousel :imgNameList=imgList :assetsURL="assetsURL"></Carousel>
+
+        </div>
+
+        <main class="h-fit w-full">
 
             <!-- articles section -->
             <section class="flex justify-center w-screen py-16">
@@ -175,14 +179,14 @@ export default {
 
                     <h2 class="text-4xl">Actualités de Paris 2024</h2>
 
-                    <div class="border-t-black border-t py-8 flex justify-between w-full gap-10">
+                    <div class="border-t-black border-t py-8 flex flex-col md:flex-row md:justify-between w-full gap-10">
 
-                        <article v-for="(article, index) in articlesForThisPage" class="flex flex-col w-full">
+                        <article v-for="(article, index) in articlesForThisPage" class="flex flex-col w-full gap-6">
                               
                             <img 
                                 :src="getImgPath(article.photo)" 
                                 :alt="article.alt" 
-                                class="cursor-pointer hover:scale-110 ease-in-out transition delay-50 rounded-md h-48 w-full"
+                                class="cursor-pointer hover:scale-110 rounded-md h-48 w-full"
                                 @click="loadArticle(article.id)"
                             >
 
