@@ -4,7 +4,7 @@ import Header from '@/Layouts/Header.vue';
 import Footer from '@/Layouts/Footer.vue';
 import Carousel from '@/Components/Carousel.vue';
 
-const imgList = ["bercy", "versailles", "vaires", "st-denis", "grand-palais"];
+const imgList = ["vaires", "versailles", "bercy", "st-denis", "grand-palais"];
 
 defineProps({
     canLogin: {
@@ -39,11 +39,11 @@ function handleImageError() {
 
     <Head title="Accueil"></Head>
 
-    <div class="h-screen">
+    <div class="h-screen w-full">
 
         <Header></Header>
         
-        <main class="h-5/6">
+        <main class="h-5/6 w-full">
 
             <Carousel :imgNameList=imgList :assetsURL="assetsURL"></Carousel>
 
