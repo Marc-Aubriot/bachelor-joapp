@@ -33,108 +33,32 @@ export default {
             type: String,
             required: true,
         },
+        articleList: {
+            type: Array,
+            required: false,
+        }
     },
 
     data() {
         return {
             newsCurrentPage: 0,
             articlesForThisPage: [],
+            articleSubList: [],
             newsMaxPage: 4,
             imgList: ["vaires.jpg", "versailles.jpg", "bercy.jpg", "st-denis.jpg", "grand-palais.jpg"],
-            articleList: [
-                [
-                    {
-                        "id": 1,
-                        "title": "Consultez la cartographie des JO!",
-                        "photo": "jo-map.png",
-                        "alt": "La carte des jeux olympiques"
-                    },
-                    {
-                        "id": 2,
-                        "title": "Les épreuves de surf!",
-                        "photo": "surf.jpg",
-                        "alt": "Un surfeur"
-                    },
-                    {
-                        "id": 3,
-                        "title": "Les épreuves de natation.",
-                        "photo": "arena.jpg",
-                        "alt": "L'arena"
-                    },
-                ],[
-                    {
-                        "id": 4,
-                        "title": "Les épreuves de basketball.",
-                        "photo": "basket.jpg",
-                        "alt": "Stade de basket"
-                    },
-                    {
-                        "id": 5,
-                        "title": "Les épreuves de triathlon!",
-                        "photo": "triatlon.jpg",
-                        "alt": "Une coureuse"
-                    },
-                    {
-                        "id": 6,
-                        "title": "Les épreuves de handball.",
-                        "photo": "handball.jpg",
-                        "alt": "photo de l'arena"
-                    },
-                ],[
-                    {
-                        "id": 1,
-                        "title": "Consultez la cartographie des JO!",
-                        "photo": "jo-map.png",
-                        "alt": "La carte des jeux olympiques"
-                    },
-                    {
-                        "id": 2,
-                        "title": "Les épreuves de surf!",
-                        "photo": "surf.jpg",
-                        "alt": "Un surfeur"
-                    },
-                    {
-                        "id": 3,
-                        "title": "Les épreuves de natation.",
-                        "photo": "arena.jpg",
-                        "alt": "L'arena"
-                    },
-                ],[
-                    {
-                        "id": 4,
-                        "title": "Les épreuves de basketball.",
-                        "photo": "basket.jpg",
-                        "alt": "Stade de basket"
-                    },
-                    {
-                        "id": 5,
-                        "title": "Les épreuves de triathlon!",
-                        "photo": "triatlon.jpg",
-                        "alt": "Une coureuse"
-                    },
-                    {
-                        "id": 6,
-                        "title": "Les épreuves de handball.",
-                        "photo": "handball.jpg",
-                        "alt": "photo de l'arena"
-                    }
-                ],
-            ],
         }
     },
 
     mounted() {
-        this.articlesForThisPage = this.articleList[this.newsCurrentPage];
+        this.populateNewSection();
     },
 
     methods: {
-        //  load img 
         getImgPath(img) {
             if (this.assetsURL) return `${this.assetsURL}/${img}`;
             else return `http://[::1]:5173/public/assets/${img}`;
         },
 
-        //  load article
         loadArticle(articleId) {
             console.log("loading this article");
         },
@@ -142,15 +66,30 @@ export default {
         previousNewsPage() {
             if (this.newsCurrentPage > 0) {
                 this.newsCurrentPage--;
-                this.articlesForThisPage = this.articleList[this.newsCurrentPage];
+                this.articlesForThisPage = this.articleSubList[this.newsCurrentPage];
             };
         },
 
         nextNewsPage() {
-            if (this.newsCurrentPage < this.newsMaxPage-1) {
+            if (this.newsCurrentPage < this.articleSubList.length-1) {
                 this.newsCurrentPage++;
-                this.articlesForThisPage = this.articleList[this.newsCurrentPage];
+                this.articlesForThisPage = this.articleSubList[this.newsCurrentPage];
             };
+        },
+
+        populateNewSection() {
+            let count = 0;
+            let subArray = [];
+            for (let i=0; i<this.articleList.length; i++) {
+                subArray.push(this.articleList[i]);
+                count++;
+                if (count == 3) {   //  insert 3 articles in each sub array
+                    count = 0;  
+                    this.articleSubList.push(subArray);
+                    subArray = [];
+                }
+            }
+            this.articlesForThisPage = this.articleSubList[this.newsCurrentPage];
         }
     },
 }
@@ -173,7 +112,7 @@ export default {
         <main class="h-fit w-full">
 
             <!-- articles section -->
-            <section class="flex justify-center w-screen py-16">
+            <section class="flex justify-center w-screen py-16 overflow-hidden">
                 
                 <div class="w-4/5 md:w-3/5 flex flex-col gap-8">
 
@@ -208,7 +147,7 @@ export default {
                                 class="cursor-pointer"
                                 @click="previousNewsPage"
                             >
-                            <p>{{ newsCurrentPage+1 }}/{{ newsMaxPage }}</p>
+                            <p>{{ newsCurrentPage+1 }}/{{ articleSubList.length }}</p>
                             <img 
                                 src="../../../public/assets/little-arrow-right.svg" 
                                 alt="petite flèche à droite" 
