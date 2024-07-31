@@ -36,7 +36,11 @@ export default {
         articleList: {
             type: Array,
             required: false,
-        }
+        },
+        imgList: {
+            typ: Array,
+            required: false,
+        },
     },
 
     data() {
@@ -45,12 +49,13 @@ export default {
             articlesForThisPage: [],
             articleSubList: [],
             newsMaxPage: 4,
-            imgList: ["vaires.jpg", "versailles.jpg", "bercy.jpg", "st-denis.jpg", "grand-palais.jpg"],
+            //imgList: ["vaires.jpg", "versailles.jpg", "bercy.jpg", "st-denis.jpg", "grand-palais.jpg"],
         }
     },
 
     mounted() {
         this.populateNewSection();
+        console.log(this.imgList);
     },
 
     methods: {

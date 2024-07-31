@@ -25,8 +25,8 @@ export default {
     methods: {
         //  load img 
         getImgPath(img) {
-            if (this.assetsURL) return `${this.assetsURL}/${img}`;
-            else return `http://[::1]:5173/public/assets/${img}`;
+            if (this.assetsURL) return `${this.assetsURL}/${img.name}`;
+            else return `http://[::1]:5173/public/assets/${img.name}`;
         },
 
         //  load previous image index
