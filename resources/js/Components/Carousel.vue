@@ -89,7 +89,7 @@ export default {
                 v-for="(dot, index) in imgNameList"
                 src="../../../public/assets/circle.svg" 
                 alt="icône de page ronde" 
-                :class="currentIndex == 0 ? 
+                :class="currentIndex == index ? 
                     'cursor-pointer scale-150' 
                     : 'hover:scale-150 duration-50 transition ease-in-out delay-50 cursor-pointer'" 
                 @click="loadImgByIndex(index)"

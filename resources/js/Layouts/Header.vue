@@ -30,12 +30,23 @@ export default {
                 >
             </ResponsiveNavLink>
 
-            <ResponsiveNavLink href="/">
+            <ResponsiveNavLink 
+        
+                href="/"
+            >
                 <img 
                     src="../../../public/assets/account-circle.svg" 
                     alt="avatar du profil" 
                     class="cursor-pointer bg-white rounded-full p-2 hover:bg-amber-200 transition ease-in-out duration-300"
                 >
+            </ResponsiveNavLink>
+
+            <ResponsiveNavLink 
+
+                href=""
+                class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1"
+            >
+                Se connecter
             </ResponsiveNavLink>
 
             <ul class="hidden gap-6 md:flex">
