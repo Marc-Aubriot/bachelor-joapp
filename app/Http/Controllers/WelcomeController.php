@@ -17,7 +17,6 @@ class WelcomeController extends Controller
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'assetsURL' => env("ASSETS_URL"),
             'articleList' => $articles,
             'imgList' => $banner_photos,
         ]);

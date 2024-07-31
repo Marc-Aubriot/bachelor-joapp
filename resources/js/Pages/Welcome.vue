@@ -3,6 +3,7 @@ import { Head, Link } from '@inertiajs/vue3';
 import Header from '@/Layouts/Header.vue';
 import Footer from '@/Layouts/Footer.vue';
 import Carousel from '@/Components/Carousel.vue';
+import { getImgPath } from '@/utilities';
 
 export default {
     name: "Welcome",
@@ -57,10 +58,7 @@ export default {
     },
 
     methods: {
-        getImgPath(img) {
-            if (this.assetsURL) return `${this.assetsURL}/${img}`;
-            else return `http://[::1]:5173/public/assets/${img}`;
-        },
+        getImgPath,
 
         loadArticle(articleId) {
             console.log("loading this article");

@@ -12,7 +12,7 @@ export default {
 
 <template>
 
-    <footer class="bg-gradient-to-b from-light-red to-heavy-red py-8 px-4 flex flex-col sm:flex-row sm:justify-between md:px-14 gap-4 items-center">
+    <footer class="bg-black py-8 px-4 flex flex-col sm:flex-row sm:justify-between md:px-14 gap-4 items-center">
 
         <nav class="flex">
 
