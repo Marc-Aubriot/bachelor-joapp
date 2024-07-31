@@ -1,5 +1,5 @@
 <script>
-import { Head, Link } from '@inertiajs/vue3';
+import { Head } from '@inertiajs/vue3';
 import Header from '@/Layouts/Header.vue';
 import Footer from '@/Layouts/Footer.vue';
 import Carousel from '@/Components/Carousel.vue';
@@ -21,18 +21,6 @@ export default {
         },
         canRegister: {
             type: Boolean,
-        },
-        laravelVersion: {
-            type: String,
-            required: true,
-        },
-        phpVersion: {
-            type: String,
-            required: true,
-        },
-        assetsURL: {
-            type: String,
-            required: true,
         },
         articleList: {
             type: Array,

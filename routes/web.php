@@ -18,7 +18,3 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
-
-Route::get('/billets', function() {
-    return Inertia::render('Tickets');
-});

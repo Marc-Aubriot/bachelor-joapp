@@ -1,8 +1,8 @@
 <script>
-import { Head, Link } from '@inertiajs/vue3';
+import { Head } from '@inertiajs/vue3';
 import Header from '@/Layouts/Header.vue';
 import Footer from '@/Layouts/Footer.vue';
-import Ticket from '@/Components/Ticket.vue';
+import TicketCard from '@/Components/TicketCard.vue';
 import { getImgPath } from '@/utilities';
 
 export default {
@@ -12,13 +12,14 @@ export default {
         Header,
         Footer,
         Head,
-        Ticket,
+        TicketCard,
     },
 
     props: {
-        tickets: {
+        ticketList: {
             type: Array,
             required: false,
+            default: "hello"
         },
     },
 
@@ -31,6 +32,11 @@ export default {
     methods: {
         getImgPath,
 
+        scrollToOffers() {
+            const element = document.getElementById('billets');
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+
     },
 }
 </script>
@@ -38,17 +44,25 @@ export default {
 <template>
     <Head title="Billets"></Head>
 
-    <div class="h-fit w-full">
+    <div class="h-fit w-full overflow-hidden">
 
-        <div class="h-screen w-full">
+        <div class="h-screen w-full relative">
             <Header></Header>
 
             <img src="../../../public/assets/stade-de-france.jpg" alt="Drapeau des jeux olympiques de Paris 2024" class="object-cover h-full w-full">
+
+            <div class="absolute top-3/4 w-full flex justify-center">
+                <button 
+                    class="bg-amber-200 w-1/3 p-4 rounded-full hover:bg-amber-400 transition ease-in-out duration-300"
+                    @click="scrollToOffers"
+                >Voir toutes nos offres</button>
+            </div>
+            
         </div>
         
         <main class="h-fit">
 
-            <section class="flex justify-center w-screen py-16 overflow-hidden">
+            <section id="billets" class="flex justify-center w-screen py-16 overflow-hidden">
                 
                 <div class="w-4/5 md:w-3/5 flex flex-col gap-8">
 
@@ -56,32 +70,14 @@ export default {
 
                     <div class="border-t-black border-t py-8 flex flex-col md:flex-row md:justify-between w-full gap-10">
 
-                        <Ticket 
-                            
-                            title="Duo" 
-                            photo="../../../public/assets/stade-de-france.jpg"
-                            price="400" 
-                            description="Offre pour 2 entrées"
-                            color="blue"
-                        ></Ticket>
-
-                        <Ticket 
-                            
-                            title="Solo" 
-                            photo="../../../public/assets/stade-de-france.jpg"
-                            price="250" 
-                            description="Offre pour 1 entrée"
-                            color="white"
-                        ></Ticket>
-
-                        <Ticket 
-                            
-                            title="Familiale" 
-                            photo="../../../public/assets/stade-de-france.jpg"
-                            price="700" 
-                            description="Offre pour 4 entrées"
-                            color="red"
-                        ></Ticket>
+                        <TicketCard 
+                            v-for="(ticket, index) in ticketList"
+                            :title="ticket.title" 
+                            :photo="ticket.photo"
+                            :price="ticket.price"
+                            :description="ticket.description"
+                            :color="ticket.color"
+                        ></TicketCard>
 
                     </div>
 

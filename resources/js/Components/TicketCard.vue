@@ -44,16 +44,12 @@ export default {
 
         <h3 class="font-bold text-xl">Offre {{ title }}</h3>
 
-        <img :src="getImgPath(photo)" alt="photo de l'offre" class="rounded-lg">
+        <img :src="getImgPath(photo)" alt="photo de l'offre" class="rounded-lg w-96 h-44 object-cover">
 
         <p>{{ description }}</p>
 
         <p>{{ price }}€</p>
  
-        <!-- <button 
-            class="bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"
-            @click="loadTicketOfferPage(title)"
-        >Réserver ce billet</button> -->
         <ResponsiveNavLink 
             class="bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"
             :href="`/billets/${title}`"
