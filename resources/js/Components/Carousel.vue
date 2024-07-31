@@ -85,39 +85,14 @@ export default {
         <!-- dot line -->
         <div class="absolute bottom-14   left-1/3 flex gap-5 w-1/3 justify-center">
 
-            <img src="../../../public/assets/circle.svg" alt="icône de page ronde" 
+            <img 
+                v-for="(dot, index) in imgNameList"
+                src="../../../public/assets/circle.svg" 
+                alt="icône de page ronde" 
                 :class="currentIndex == 0 ? 
                     'cursor-pointer scale-150' 
                     : 'hover:scale-150 duration-50 transition ease-in-out delay-50 cursor-pointer'" 
-                @click="loadImgByIndex(0)"
-            >
-
-            <img src="../../../public/assets/circle.svg" alt="icône de page ronde" 
-                :class="currentIndex == 1 ? 
-                    'cursor-pointer scale-150' 
-                    : 'hover:scale-150 duration-50 transition ease-in-out delay-50 cursor-pointer'" 
-                @click="loadImgByIndex(1)"
-            >
-
-            <img src="../../../public/assets/circle.svg" alt="icône de page ronde" 
-                :class="currentIndex == 2 ? 
-                    'cursor-pointer scale-150' 
-                    : 'hover:scale-150 duration-50 transition ease-in-out delay-50 cursor-pointer'" 
-                @click="loadImgByIndex(2)"
-            >
-
-            <img src="../../../public/assets/circle.svg" alt="icône de page ronde" 
-                :class="currentIndex == 3 ? 
-                    'cursor-pointer scale-150' 
-                    : 'hover:scale-150 duration-50 transition ease-in-out delay-50 cursor-pointer'" 
-                @click="loadImgByIndex(3)"
-            >
-
-            <img src="../../../public/assets/circle.svg" alt="icône de page ronde" 
-                :class="currentIndex == 4 ? 
-                    'cursor-pointer scale-150' 
-                    : 'hover:scale-150 duration-50 transition ease-in-out delay-50 cursor-pointer'"  
-                @click="loadImgByIndex(4)"
+                @click="loadImgByIndex(index)"
             >
 
         </div>

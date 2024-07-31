@@ -4,8 +4,10 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\TicketsController;
 
 Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/billets', [TicketsController::class, 'index']);
 
 Route::middleware([
     'auth:sanctum',

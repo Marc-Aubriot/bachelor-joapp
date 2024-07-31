@@ -49,13 +49,11 @@ export default {
             articlesForThisPage: [],
             articleSubList: [],
             newsMaxPage: 4,
-            //imgList: ["vaires.jpg", "versailles.jpg", "bercy.jpg", "st-denis.jpg", "grand-palais.jpg"],
         }
     },
 
     mounted() {
         this.populateNewSection();
-        console.log(this.imgList);
     },
 
     methods: {
