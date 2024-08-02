@@ -52,7 +52,7 @@ export default {
         <!-- carousel imgs -->
         <img 
             v-for="(img, index) in imgNameList"
-            :src="getImgPath(img)" alt="photo de Bercy" 
+            :src="getImgPath(img.name)" alt="photo de Bercy" 
             :class="currentIndex == index ?
                 'absolute top-0 object-cover h-full w-full duration-700 ease-in-out'
                 : currentIndex < index ? 

@@ -5,7 +5,7 @@
  */
 
 const getImgPath = (img) => {
-    return `https://dev4a.online/public/assets/${img.name}`;   //  PROD
+    return `https://dev4a.online/public/assets/${img}`;   //  PROD
     //return `http://[::1]:5173/public/assets/${img}`;  //  LOCAL
 };
 
