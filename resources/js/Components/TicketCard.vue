@@ -52,7 +52,7 @@ export default {
  
         <ResponsiveNavLink 
             class="bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"
-            :href="`/billets/${title}`"
+            :href="`/paiement/${title}`"
         >Réserver ce billet</ResponsiveNavLink>
 
     </article>
