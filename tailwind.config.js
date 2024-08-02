@@ -20,6 +20,8 @@ export default {
             colors: {
                 'light-blue': '#3E90C7',
                 'heavy-blue': '#2664A0',
+                'light-red': '#FE5757',
+                'heavy-red': '#983434',
             },
             height: {
                 '120': '120px',

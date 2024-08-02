@@ -18,7 +18,7 @@ export default {
 
 <template>
 
-    <div class="bg-gradient-to-b from-light-blue to-heavy-blue flex h-120 justify-between">
+    <header class="flex h-120 w-full justify-between absolute top-0 z-50 bg-black bg-opacity-30">
 
         <!-- left nav basket and profile -->
         <div class="flex gap-4 ml-4 items-center grow basis-0">
@@ -26,23 +26,34 @@ export default {
                 <img 
                     src="../../../public/assets/shopping-basket.svg" 
                     alt="panier d'achat" 
-                    class="h-45 w-45 cursor-pointer"
+                    class="cursor-pointer bg-white rounded-full p-2 hover:bg-amber-200 transition ease-in-out duration-300"
                 >
             </ResponsiveNavLink>
 
-            <ResponsiveNavLink href="/">
+            <ResponsiveNavLink 
+        
+                href="/"
+            >
                 <img 
                     src="../../../public/assets/account-circle.svg" 
                     alt="avatar du profil" 
-                    class="h-45 w-45 cursor-pointer"
+                    class="cursor-pointer bg-white rounded-full p-2 hover:bg-amber-200 transition ease-in-out duration-300"
                 >
             </ResponsiveNavLink>
 
+            <ResponsiveNavLink 
+
+                href="/login"
+                class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1"
+            >
+                Se connecter
+            </ResponsiveNavLink>
+
             <ul class="hidden gap-6 md:flex">
-                <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Relais de la flamme</ResponsiveNavLink>
                 </li>
-                <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Calendrier</ResponsiveNavLink>
                 </li>
             </ul>
@@ -52,15 +63,15 @@ export default {
         <div class="h-120 flex justify-center">
             <ResponsiveNavLink href="/">
                 <img 
-                    src="../../../public/assets/app-logo.png" 
+                    src="../../../public/assets/logo-2.svg" 
                     alt="logo" 
-                    class="h-full w-auto cursor-pointer"
+                    class="h-120 w-auto cursor-pointer scale-90"
                 >
             </ResponsiveNavLink>
         </div>
 
         <!-- right nav links -->
-        <div class="flex justify-end items-center grow basis-0">
+        <nav class="flex justify-end items-center grow basis-0">
             <img 
                 v-if="hamburgerMenuIsOpen"
                 src="../../../public/assets/close-menu.svg" 
@@ -77,51 +88,51 @@ export default {
             >
 
             <ul class="hidden md:flex justify-between mr-8 gap-6">
-                <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Accueil</ResponsiveNavLink>
                 </li>
-                <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/billets">Billets</ResponsiveNavLink>
                 </li>
-                <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Boutique</ResponsiveNavLink>
                 </li>
-                <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Hospitalité</ResponsiveNavLink>
                 </li>
-                <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Langues</ResponsiveNavLink>
                 </li>
             </ul>
 
-        </div>
+        </nav>
 
-    </div>
+    </header>
 
-    <div v-if="hamburgerMenuIsOpen == true" class="bg-gradient-to-b from-heavy-blue to-light-blue h-screen md:hidden">
-        <ul class="flex flex-col md:flex-row justify-evenly items-center h-full">
-            <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+    <nav v-if="hamburgerMenuIsOpen == true" class="h-screen md:hidden absolute top-[120px] py-10 z-50 w-full bg-black bg-opacity-30">
+        <ul class="flex flex-col md:flex-row gap-4 items-center w-full h-3/5">
+            <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
                 <ResponsiveNavLink href="/">Relais de la flamme</ResponsiveNavLink>
             </li>
-            <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+            <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
                 <ResponsiveNavLink href="/">Calendrier</ResponsiveNavLink>
             </li>
-            <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+            <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
                 <ResponsiveNavLink href="/">Accueil</ResponsiveNavLink>
             </li>
-            <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+            <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
                 <ResponsiveNavLink href="/billets">Billets</ResponsiveNavLink>
             </li>
-            <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+            <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
                 <ResponsiveNavLink href="/">Boutique</ResponsiveNavLink>
             </li>
-            <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+            <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
                 <ResponsiveNavLink href="/">Hospitalité</ResponsiveNavLink>
             </li>
-            <li class="text-white text-2xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+            <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
                 <ResponsiveNavLink href="/">Langues</ResponsiveNavLink>
             </li>
         </ul>
-    </div>
+    </nav>
     
 </template>
