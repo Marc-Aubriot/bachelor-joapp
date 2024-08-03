@@ -10,12 +10,6 @@ export default {
             type: Array,
             default: null,
         },
-
-        //  base url for assets
-        assetsURL: {
-            type: String,
-            default: null
-        },
     },
 
     data() {

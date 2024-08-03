@@ -1,9 +1,22 @@
+<script setup>
+import { computed } from 'vue'
+import { usePage } from '@inertiajs/vue3'
+import { router } from '@inertiajs/vue3';
+const page = usePage();
+const user = computed(() => page.props.auth.user);
+
+const logout = () => {
+    router.post(route('logout'));
+};
+
+</script>
+
 <script>
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
 export default {
     name: 'Header',
-
+    
     components: {
         ResponsiveNavLink,
     },
@@ -19,6 +32,13 @@ export default {
 <template>
 
     <header class="flex h-120 w-full justify-between absolute top-0 z-50 bg-black bg-opacity-30">
+        
+        <!-- Authentication -->
+        <!-- <form method="POST" @submit.prevent="logout">
+            <ResponsiveNavLink as="button">
+                Log Out
+            </ResponsiveNavLink>
+        </form> -->
 
         <!-- left nav basket and profile -->
         <div class="flex gap-4 ml-4 items-center grow basis-0">
@@ -31,7 +51,7 @@ export default {
             </ResponsiveNavLink>
 
             <ResponsiveNavLink 
-        
+                v-if="user"
                 href="/"
             >
                 <img 
@@ -42,7 +62,7 @@ export default {
             </ResponsiveNavLink>
 
             <ResponsiveNavLink 
-
+                v-else
                 href="/login"
                 class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1"
             >
