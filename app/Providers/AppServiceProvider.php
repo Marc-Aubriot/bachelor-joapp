@@ -18,7 +18,10 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
     public function boot(): void
-    {
-        //
+    {   
+        // PROD comment this part fort production
+        \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::except([
+            '*'
+        ]);
     }
 }

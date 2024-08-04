@@ -72,6 +72,7 @@ export default {
 
                         <TicketCard 
                             v-for="(ticket, index) in ticketList"
+                            :id="ticket.id"
                             :title="ticket.title" 
                             :photo="ticket.photo"
                             :price="ticket.price"

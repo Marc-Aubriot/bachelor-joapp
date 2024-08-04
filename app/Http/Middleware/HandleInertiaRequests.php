@@ -36,8 +36,6 @@ class HandleInertiaRequests extends Middleware
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
-            'appName' => config('app.name'),
-            // Lazily...
             'auth.user' => fn () => $request->user()
                 ? $request->user()->only('id', 'firstname','lastname', 'email')
                 : null,

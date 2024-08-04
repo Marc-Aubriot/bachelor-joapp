@@ -1,15 +1,21 @@
 <script>
+import { router, useForm  } from '@inertiajs/vue3'
 import { getImgPath } from '@/utilities';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import PrimaryCustomButton from './PrimaryCustomButton.vue';
+import axios from 'axios';
 
 export default {
     name: 'Ticket',
 
     components: {
-        ResponsiveNavLink,
+        PrimaryCustomButton,
     },
 
     props: {
+        id: {
+            type: Number,
+            required: true,
+        },
         title: {
             type: String,
             default: "default title"
@@ -32,8 +38,30 @@ export default {
         },
     },
 
+    computed: {
+        user() {
+            return this.$page.props.auth.user
+        },
+        message() {
+            return this.$page.props.flash.message
+        },
+        csrf() {
+            return this.$page.props.csrf_token
+        },
+    },
+
     methods: {
         getImgPath,
+
+        async addToShoppingList(item) {
+            try  {
+                console.log(this.user);
+                const response = await axios.post(`/addtocart/${item}`);
+                console.log(response);
+            } catch (e) {
+                console.log(e);
+            }
+        },
     }
 }
 </script>
@@ -49,11 +77,10 @@ export default {
         <p>{{ description }}</p>
 
         <p>{{ price }}€</p>
- 
-        <ResponsiveNavLink 
-            class="bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"
-            :href="`/paiement/${title}`"
-        >Réserver ce billet</ResponsiveNavLink>
+
+        <form method="POST" @submit.prevent="addToShoppingList(id)">
+            <PrimaryCustomButton>Ajouter au panier</PrimaryCustomButton>
+        </form>
 
     </article>
 
