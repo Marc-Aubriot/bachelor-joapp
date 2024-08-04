@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('description');
             $table->string('color');
+            $table->string('stripe_checkout_link');
         });
     }
 

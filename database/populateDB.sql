@@ -15,8 +15,8 @@ values
 ('vaires.jpg'),
 ('versailles.jpg');
 
-insert into tickets (title, photo, price, description, color)
+insert into tickets (title, photo, price, description, color, stripe_checkout_link)
 values
-('Duo', 'duo.jpg', '400', 'Billet pour 2 entrées', 'blue'),
-('Solo', 'solo.jpg', '250', 'Billet pour 1 entrée', 'white'),
-('Familiale', 'familiale.jpg', '740', 'Billet pour 4 entrées', 'red');
+('Duo', 'duo.jpg', '400', 'Billet pour 2 entrées', 'blue', 'https://buy.stripe.com/test_3cs4gF0hSeHydoc3cg'),
+('Solo', 'solo.jpg', '250', 'Billet pour 1 entrée', 'white', 'https://buy.stripe.com/test_8wMdRfc0AgPGck828d'),
+('Familiale', 'familiale.jpg', '740', 'Billet pour 4 entrées', 'red', 'https://buy.stripe.com/test_eVa4gF9Ss56Y4RG7su');

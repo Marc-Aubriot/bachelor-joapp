@@ -36,6 +36,7 @@ export default {
             type: String,
             default: "black"
         },
+        stripe_checkout_link: String,
     },
 
     computed: {
@@ -48,6 +49,10 @@ export default {
         csrf() {
             return this.$page.props.csrf_token
         },
+    },
+
+    mounted() {
+        console.log(this.stripe_checkout_link)
     },
 
     methods: {
@@ -78,9 +83,26 @@ export default {
 
         <p>{{ price }}€</p>
 
-        <form method="POST" @submit.prevent="addToShoppingList(id)">
+        <!-- <form method="POST" @submit.prevent="addToShoppingList(id)">
             <PrimaryCustomButton>Ajouter au panier</PrimaryCustomButton>
-        </form>
+        </form> -->
+
+        <a  
+            v-if="user != null"
+            target="_blank"
+            class="bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"
+            :href="stripe_checkout_link"
+        >
+            Réserver ce billet
+        </a>
+
+        <a  
+            v-else
+            class="bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"
+            href="/login"
+        >
+            Réserver ce billet
+        </a>
 
     </article>
 
