@@ -78,7 +78,7 @@ export default {
                             :price="ticket.price"
                             :description="ticket.description"
                             :color="ticket.color"
-                            :stripe_checkout_link="ticket.stripe_checkout_link"
+                            :stripeItemPrice="ticket.stripe_item_price"
                         ></TicketCard>
 
                     </div>

@@ -20,6 +20,6 @@ class Ticket extends Model
         'price',
         'description',
         'color',
-        'stripe_checkout_link'
+        'stripe_item_price'
     ];
 }

@@ -1,8 +1,7 @@
 <script>
-import { router, useForm  } from '@inertiajs/vue3'
+import axios from 'axios';
 import { getImgPath } from '@/utilities';
 import PrimaryCustomButton from './PrimaryCustomButton.vue';
-import axios from 'axios';
 
 export default {
     name: 'Ticket',
@@ -36,33 +35,21 @@ export default {
             type: String,
             default: "black"
         },
-        stripe_checkout_link: String,
+        stripeItemPrice: String,
     },
 
     computed: {
         user() {
-            return this.$page.props.auth.user
+            return this.$page.props.auth.user;
         },
-        message() {
-            return this.$page.props.flash.message
-        },
-        csrf() {
-            return this.$page.props.csrf_token
-        },
-    },
-
-    mounted() {
-        console.log(this.stripe_checkout_link)
     },
 
     methods: {
         getImgPath,
 
-        async addToShoppingList(item) {
+        async addToShoppingList() {
             try  {
-                console.log(this.user);
-                const response = await axios.post(`/addtocart/${item}`);
-                console.log(response);
+                const response = await axios.post(`/addtocart`, {item_id: this.stripeItemPrice});
             } catch (e) {
                 console.log(e);
             }
@@ -83,19 +70,15 @@ export default {
 
         <p>{{ price }}€</p>
 
-        <!-- <form method="POST" @submit.prevent="addToShoppingList(id)">
-            <PrimaryCustomButton>Ajouter au panier</PrimaryCustomButton>
-        </form> -->
-
-        <a  
-            v-if="user != null"
-            target="_blank"
-            class="bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"
-            :href="stripe_checkout_link"
-        >
-            Réserver ce billet
-        </a>
-
+        <form v-if="user != null" @submit.prevent="addToShoppingList">
+            <button  
+                class="bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"
+                type="submit"
+            >
+                Réserver ce billet
+            </button>
+        </form>
+  
         <a  
             v-else
             class="bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"
