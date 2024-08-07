@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('user_id')->nullable();;
+            $table->string('user_id');
             $table->string('order_id')->nullable();
-            $table->string('item_id')->default(1);;
-            $table->string('quantity')->nullable();
+            $table->string('item_id');
+            $table->string('quantity')->default(1);
         });
     }
 

@@ -9,6 +9,22 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {   
+
+    /**
+   * load Cart view
+   *
+   * @return \Illuminate\Http\Response
+   */
+    public function index(string $userid) {
+
+        $cart = Cart::whereUserId($userid)->get();
+
+        return Inertia::render('Cart', [
+            'cart' => $cart
+        ]);
+
+    }
+
     /**
    * Add item to cart
    *

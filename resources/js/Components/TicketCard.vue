@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { getImgPath } from '@/utilities';
 import PrimaryCustomButton from './PrimaryCustomButton.vue';
+import { toaster } from '@/utilities';
 
 export default {
     name: 'Ticket',
@@ -50,8 +51,10 @@ export default {
         async addToShoppingList() {
             try  {
                 const response = await axios.post(`/addtocart`, {item_id: this.stripeItemPrice});
+                toaster("Billet enregistré.", "success");
             } catch (e) {
-                console.log(e);
+                toaster("Erreur lors de l'enregistrement du illet", "error");
+                console.error(e);
             }
         },
     }

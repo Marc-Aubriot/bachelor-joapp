@@ -1,18 +1,13 @@
 <script setup>
-import { computed } from 'vue'
-import { usePage } from '@inertiajs/vue3'
-import { router } from '@inertiajs/vue3';
+import { usePage } from '@inertiajs/vue3';
+import { computed } from 'vue';
 const page = usePage();
 const user = computed(() => page.props.auth.user);
-
-const logout = () => {
-    router.post(route('logout'));
-};
-
 </script>
 
 <script>
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import { router } from '@inertiajs/vue3';
 
 export default {
     name: 'Header',
@@ -26,6 +21,13 @@ export default {
             hamburgerMenuIsOpen: false,
         }
     },
+
+    methods: {
+        logout() {
+            const page = usePage();
+            router.post(route('logout'));
+        },
+    }
 }
 </script>
 
@@ -42,7 +44,7 @@ export default {
 
         <!-- left nav basket and profile -->
         <div class="flex gap-4 ml-4 items-center grow basis-0">
-            <ResponsiveNavLink href="/">
+            <ResponsiveNavLink v-if="user" :href="`/cart/${user.id}`">
                 <img 
                     src="../../../public/assets/shopping-basket.svg" 
                     alt="panier d'achat" 

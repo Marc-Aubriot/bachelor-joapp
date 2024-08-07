@@ -1,5 +1,12 @@
 <script>
+export default {
+    name: 'Cart',
 
+    props: {
+        cart: Array,
+    },
+
+}
 </script>
 
 <template>

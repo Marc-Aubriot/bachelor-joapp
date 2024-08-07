@@ -15,8 +15,8 @@ use App\Models\Order;
 Route::get('/', [WelcomeController::class, 'index']);
 
 Route::get('/billets', [TicketsController::class, 'index']);
-Route::post('/addtocart', [TicketsController::class, 'addToCart']);
-
+Route::post('/addtocart', [TicketsController::class, 'addTicketToCart']);
+Route::get('/cart/{userid}', [CartController::class, 'index']);
 Route::get('/paiement/{title}', [BuyingController::class, 'index'])->middleware('auth');
  
 Route::get('/cart/{cart}/checkout', function (Request $request, String $itemlink, Cart $cart ) {
