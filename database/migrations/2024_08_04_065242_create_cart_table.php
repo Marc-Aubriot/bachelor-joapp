@@ -16,8 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('user_id');
             $table->string('order_id')->nullable();
-            $table->string('item_id');
-            $table->string('quantity')->default(1);
+            $table->string('item_list_id');
         });
     }
 

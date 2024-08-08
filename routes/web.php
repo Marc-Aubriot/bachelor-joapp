@@ -19,22 +19,37 @@ Route::post('/addtocart', [TicketsController::class, 'addTicketToCart']);
 Route::get('/cart/{userid}', [CartController::class, 'index']);
 Route::get('/paiement/{title}', [BuyingController::class, 'index'])->middleware('auth');
  
-Route::get('/cart/{cart}/checkout', function (Request $request, String $itemlink, Cart $cart ) {
-    $stripePriceId = $itemlink;
-    $quantity = 1;
-    
+Route::get('/cart/{cartid}/checkout', function (Request $request, Cart $cartid) {
+    $cart = Cart::find($cartid);
     $order = Order::create([
         'cart_id' => $cart->id,
-        'price_ids' => $cart->price_ids,
-        'status' => 'incomplete',
+        //'price_ids' => $cart->price_ids,
+        //'status' => 'incomplete',
     ]);
-
-    return $request->user()->checkout([$stripePriceId => $quantity], [
+ 
+    return $request->user()->checkout(['price_1PgXmtRtjtpXYIzjcNO9UDsP','price_1PkAikRtjtpXYIzjKnnFdh0W'], [
         'success_url' => route('checkout-success').'?session_id={CHECKOUT_SESSION_ID}',
         'cancel_url' => route('checkout-cancel'),
         'metadata' => ['order_id' => $order->id],
     ]);
 })->name('checkout');
+
+// Route::get('/cart/{cart}/checkout', function (Request $request, String $itemlink, Cart $cart ) {
+//     $stripePriceId = $itemlink;
+//     $quantity = 1;
+    
+//     $order = Order::create([
+//         'cart_id' => $cart->id,
+//         'price_ids' => $cart->price_ids,
+//         'status' => 'incomplete',
+//     ]);
+
+//     return $request->user()->checkout([$stripePriceId => $quantity], [
+//         'success_url' => route('checkout-success').'?session_id={CHECKOUT_SESSION_ID}',
+//         'cancel_url' => route('checkout-cancel'),
+//         'metadata' => ['order_id' => $order->id],
+//     ]);
+// })->name('checkout');
  
 Route::view('/checkout/success', 'checkout.success')->name('checkout-success');
 Route::view('/checkout/cancel', 'checkout.cancel')->name('checkout-cancel');
