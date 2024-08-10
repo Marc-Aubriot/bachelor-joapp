@@ -55,7 +55,7 @@ export default {
 
         async addToShoppingList() {
             try  {
-                const response = await axios.post(`/addtocart`, {item_id: this.stripeItemPrice});
+                const response = await axios.post(`/addtocart`, {stripe_item_price: this.stripeItemPrice});
                 toaster("Billet enregistré.", "success");
             } catch (e) {
                 toaster("Erreur lors de l'enregistrement du illet", "error");

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CartItem extends Model
+class CartTicket extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,8 @@ class CartItem extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'item_id',
+        'ticket_id',
         'cart_id',
+        'quantity',
     ];
 }

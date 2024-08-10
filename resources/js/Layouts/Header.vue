@@ -71,14 +71,14 @@ export default {
                 Se connecter
             </ResponsiveNavLink>
 
-            <ul class="hidden gap-6 md:flex">
+            <!-- <ul class="hidden gap-6 md:flex">
                 <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Relais de la flamme</ResponsiveNavLink>
                 </li>
                 <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Calendrier</ResponsiveNavLink>
                 </li>
-            </ul>
+            </ul> -->
         </div>
         
         <!-- center logo -->
@@ -116,7 +116,7 @@ export default {
                 <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/billets">Billets</ResponsiveNavLink>
                 </li>
-                <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
+                <!-- <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Boutique</ResponsiveNavLink>
                 </li>
                 <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
@@ -124,7 +124,7 @@ export default {
                 </li>
                 <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Langues</ResponsiveNavLink>
-                </li>
+                </li> -->
             </ul>
 
         </nav>

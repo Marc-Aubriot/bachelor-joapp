@@ -50,10 +50,10 @@ export default {
 
         async addToShoppingList() {
             try  {
-                const response = await axios.post(`/addtocart`, {item_id: this.stripeItemPrice});
+                const response = await axios.post(`/addtocart`, {stripe_item_price: this.stripeItemPrice});
                 toaster("Billet enregistré.", "success");
             } catch (e) {
-                toaster("Erreur lors de l'enregistrement du illet", "error");
+                toaster("Erreur lors de l'enregistrement du billet", "error");
                 console.error(e);
             }
         },
@@ -63,7 +63,7 @@ export default {
 
 <template>
 
-    <article :class="`flex flex-col gap-10 rounded-lg items-center shadow-lg shadow-${color}-500/50 p-10`">
+    <article :class="`flex flex-col gap-2 rounded-lg items-center shadow-lg shadow-${color}-500/50 p-10`">
 
         <h3 class="font-bold text-xl">Offre {{ title }}</h3>
 

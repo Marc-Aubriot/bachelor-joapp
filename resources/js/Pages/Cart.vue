@@ -17,12 +17,11 @@ export default {
     },
 
     props: {
-        cart: Array,
+        cart: Object,
         ticketlist: Array,
     },
 
     mounted() {
-        console.log(this.cart);
         console.log(this.ticketlist);
     },
 
@@ -51,31 +50,35 @@ export default {
 
             <img src="../../../public/assets/st-quentin.jpg" alt="Drapeau des jeux olympiques de Paris 2024" class="object-cover h-full w-full">
 
-            <main class="absolute top-24 w-full h-fit md:h-5/6 flex flex-col md:flex-row items-center md:justify-evenly">
+            <main class="absolute top-1/4 w-full md:h-screen flex flex-col md:flex-row md:justify-evenly">
 
-                <div class="w-3/4 h-fit md:w-3/6 p-10 rounded-xl flex flex-col gap-6 bg-white">
+                <div v-if="cart != null" class="w-3/4 md:w-4/6 md:h-4/6 p-10 rounded-xl flex flex-col bg-white">
 
                     <h1 class="text-xl font-bold">Mon panier</h1>
                     
-                    <div class="flex flex-col gap-10">
+                    <div class="flex flex-col gap-1 overflow-y-scroll pr-6">
 
                         <TicketCardMini
                             v-for="(ticket, index) in ticketlist"
-                            :id="ticket[0].id"
-                            :title="ticket[0].title" 
-                            :photo="ticket[0].photo"
-                            :price="ticket[0].price"
-                            :description="ticket[0].description"
-                            :color="ticket[0].color"
-                            :stripeItemPrice="ticket[0].stripe_item_price"
-                            :quantity="ticket[1]"
+                            :id="ticket.id"
+                            :title="ticket.title" 
+                            :photo="ticket.photo"
+                            :price="ticket.price"
+                            :description="ticket.description"
+                            :color="ticket.color"
+                            :stripeItemPrice="ticket.stripe_item_price"
+                            :quantity="ticket.quantity"
                         ></TicketCardMini>
 
                     </div>
 
                 </div>
 
-                <div class="w-3/4 h-5/6 md:w-1/6 p-10 rounded-xl flex flex-col gap-6 bg-white">
+                <div v-else class="w-3/4 h-fit md:w-3/6 p-10 rounded-xl flex flex-col items-center gap-6 bg-white">
+                    <h1 class="text-xl font-bold">Votre panier est vide</h1>
+                </div>
+
+                <div v-if="cart != null" class="w-3/4 md:h-4/6 md:w-1/6 p-10 rounded-xl flex flex-col gap-6 bg-white">
 
                     <h2 class="text-xl font-bold">Ma facture</h2>
                     <form @submit.prevent="addToShoppingList">
@@ -88,7 +91,11 @@ export default {
                     </form>
                 </div>   
 
-            </main>
+                <div v-else class="w-3/4 h-fit md:w-1/6 p-10 rounded-xl flex flex-col gap-6 bg-white">
+                    <h2 class="text-xl font-bold">Aucune facture</h2>
+                </div>   
+
+            </main> 
             
         </div>
 
