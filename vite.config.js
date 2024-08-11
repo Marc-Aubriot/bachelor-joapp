@@ -12,15 +12,15 @@ export default defineConfig({
         vue({
             template: {
                 //  LOCAL uncomment before local build
-                // transformAssetUrls: {
-                //     base: null,               
-                //     includeAbsolute: false,     
-                // },
-                //  PROD uncomment before prod build
                 transformAssetUrls: {
-                    base: "test",               
-                    includeAbsolute: true,     
+                    base: null,               
+                    includeAbsolute: false,     
                 },
+                //  PROD uncomment before prod build
+                // transformAssetUrls: {
+                //     base: "test",               
+                //     includeAbsolute: true,     
+                // },
             },
         }),
         
