@@ -42,9 +42,9 @@ class TicketsController extends Controller
         $user_id = $user->id;
 
         //  get the cart
-        $cart = Cart::where('user_id', $user_id)->get();
+        $cart = Cart::where('user_id', $user_id)->where('is_active', true)->first();
 
-        if (count($cart) >= 1) {
+        if ($cart != null) {
             //  if cart exist, check if item already exist in cart then add item to cart or update quantity
             $item = CartTicket::where('id', $ticket->id)->first();
 
@@ -54,7 +54,7 @@ class TicketsController extends Controller
                 
                 return response(
                     [
-                        'cart'=> $cart[0], 
+                        'cart'=> $cart, 
                         'cart_item'=> $item,
                         'ticket'=> $ticket,
                         'message' => 'cart updated',
@@ -63,13 +63,13 @@ class TicketsController extends Controller
 
             } else {
                 $new_item = new CartTicket;
-                $new_item->cart_id = $cart[0]->id;
+                $new_item->cart_id = $cart->id;
                 $new_item->ticket_id = $ticket->id;
                 $new_item->save();
 
                 return response(
                     [
-                        'cart'=> $cart[0], 
+                        'cart'=> $cart, 
                         'cart_item'=> $new_item,
                         'ticket'=> $ticket,
                         'message' => 'cart updated',

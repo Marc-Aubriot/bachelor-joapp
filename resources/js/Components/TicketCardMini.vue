@@ -68,7 +68,7 @@ export default {
 
 <template>
 
-    <article :class="`flex gap-10 rounded-lg justify-between shadow-lg shadow-${color}-500/50 h-40 p-10`">
+    <article :class="`flex flex-col mb-5 md:flex-row gap-2 w-80 md:w-full md:gap-10 rounded-lg justify-between shadow-lg shadow-${color}-500/50 md:h-40 p-2 md:p-10`">
 
         <div class="flex w-fit gap-10">
             <div class="flex flex-col w-fit gap-10">

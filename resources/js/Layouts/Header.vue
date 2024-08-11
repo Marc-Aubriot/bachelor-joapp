@@ -110,10 +110,10 @@ export default {
             >
 
             <ul class="hidden md:flex justify-between mr-8 gap-6">
-                <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
+                <li class="text-sm xl:text-xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Accueil</ResponsiveNavLink>
                 </li>
-                <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
+                <li class="text-sm xl:text-xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/billets">Billets</ResponsiveNavLink>
                 </li>
                 <!-- <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">

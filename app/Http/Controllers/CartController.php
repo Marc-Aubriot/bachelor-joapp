@@ -19,12 +19,14 @@ class CartController extends Controller
    */
     public function index(string $userid) {
 
-        $cart = Cart::whereUserId($userid)->first();
+        $cart = Cart::whereUserId($userid)->where('is_active', true)->first();
 
         //  get a list of each items with corresponding ticket info to populate view
-        $ticket_list = CartTicket::where('cart_id', $cart->id)
-            ->join('tickets', 'ticket_id', '=', 'tickets.id')
-            ->get();
+        $ticket_list = null;
+
+        if ($cart != null) {
+            $ticket_list = CartTicket::where('cart_id', $cart->id)->join('tickets', 'ticket_id', '=', 'tickets.id')->get();
+        }
 
         return Inertia::render('Cart', [
             'cart' => $cart,
