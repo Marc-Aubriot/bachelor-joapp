@@ -1,9 +1,9 @@
-<script setup>
+<!-- <script setup>
 import { usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 const page = usePage();
 const user = computed(() => page.props.auth.user);
-</script>
+</script> -->
 
 <script>
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
@@ -22,9 +22,15 @@ export default {
         }
     },
 
+    computed: {
+        user() {
+            return this.$page.props.auth.user;
+        },
+    },
+
     methods: {
         logout() {
-            const page = usePage();
+            //const page = usePage();
             router.post(route('logout'));
         },
     }
