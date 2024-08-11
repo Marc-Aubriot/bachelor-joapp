@@ -16,9 +16,8 @@ return new class extends Migration
             $table->timestamps();
             $table->string('user_id');
             $table->string('cart_id');
-            $table->string('price');
-            $table->string('price_ids');
-            $table->string('status');
+            $table->string('amount_paid');
+            $table->string('status')->nullable();
         });
     }
 

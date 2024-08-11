@@ -10,24 +10,45 @@ use App\Http\Controllers\BuyingController;
 use App\Http\Controllers\CartController;
 use Laravel\Cashier\Cashier;
 use App\Models\Cart;
+use App\Models\CartTicket;
+use App\Models\Ticket;
 use App\Models\Order;
 
-Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/', [WelcomeController::class, 'index'])->name('home');
 
-Route::get('/billets', [TicketsController::class, 'index']);
+Route::get('/billets', [TicketsController::class, 'index'])->name('tickets');
 Route::post('/addtocart', [TicketsController::class, 'addTicketToCart']);
-Route::get('/cart/{userid}', [CartController::class, 'index']);
+Route::get('/cart/{userid}', [CartController::class, 'index'])->name('cart');
 Route::get('/paiement/{title}', [BuyingController::class, 'index'])->middleware('auth');
  
-Route::get('/cart/{cartid}/checkout', function (Request $request, Cart $cartid) {
-    $cart = Cart::find($cartid);
+Route::get('/cart/{userid}/checkout/{cartid}', function (Request $request, string $userid,string $cartid) {
+    $cart = Cart::where('user_id', $userid)->first();
+
+    //  get all tickets and amount_paid for this cart
+    $items = CartTicket::where('cart_id', $cartid)->get()->toArray();
+    $line_items = array();
+    $amount_paid = 0;
+
+    //  prepare a list of items for stripe
+    for ($i = 0; $i < count($items); $i++) {
+        $ticket = Ticket::where('id', $items[$i]['ticket_id'])->first();
+        $tickets_cost = $ticket['price'] * $items[$i]['quantity'];
+        $amount_paid = $amount_paid + $tickets_cost;
+        $item = array(
+            'price' => $ticket['stripe_item_price'],
+            'quantity' => $items[$i]['quantity'],
+        );
+        array_push($line_items, $item);
+    }
+
     $order = Order::create([
         'cart_id' => $cart->id,
-        //'price_ids' => $cart->price_ids,
-        //'status' => 'incomplete',
+        'user_id' => $userid,
+        'amount_paid' => $amount_paid,
+        'status' => 'incomplete',
     ]);
- 
-    return $request->user()->checkout(['price_1PgXmtRtjtpXYIzjcNO9UDsP','price_1PkAikRtjtpXYIzjKnnFdh0W'], [
+
+    return $request->user()->checkout($line_items, [
         'success_url' => route('checkout-success').'?session_id={CHECKOUT_SESSION_ID}',
         'cancel_url' => route('checkout-cancel'),
         'metadata' => ['order_id' => $order->id],

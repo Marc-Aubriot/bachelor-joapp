@@ -5,6 +5,7 @@ import { Head } from '@inertiajs/vue3';
 import TicketCardMini from '@/Components/TicketCardMini.vue';
 import { toaster } from '@/utilities';
 import axios from 'axios';
+import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
 export default {
     name: 'Cart',
@@ -14,6 +15,7 @@ export default {
         Footer,
         Head,
         TicketCardMini,
+        ResponsiveNavLink,
     },
 
     props: {
@@ -21,22 +23,11 @@ export default {
         ticketlist: Array,
     },
 
-    mounted() {
-        console.log(this.ticketlist);
-    },
-
-    methods: {
-        async addToShoppingList() {
-            try  {
-                const response = await axios.get(`/cart/${this.cart.id}/checkout`);
-                //toaster("Billet enregistré.", "success");
-            } catch (e) {
-                toaster("Erreur lors de l'enregistrement du illet", "error");
-                console.error(e);
-            }
+    computed: {
+        user() {
+            return this.$page.props.auth.user;
         },
-    }
-
+    },
 }
 </script>
 
@@ -81,14 +72,13 @@ export default {
                 <div v-if="cart != null" class="w-3/4 md:h-4/6 md:w-1/6 p-10 rounded-xl flex flex-col gap-6 bg-white">
 
                     <h2 class="text-xl font-bold">Ma facture</h2>
-                    <form @submit.prevent="addToShoppingList">
-                        <button  
+
+                        <a  
                             class="bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"
-                            type="submit"
+                            :href="`/cart/${user.id}/checkout/${cart.id}`"
                         >
                             Payer ma commande
-                        </button>
-                    </form>
+                        </a>
                 </div>   
 
                 <div v-else class="w-3/4 h-fit md:w-1/6 p-10 rounded-xl flex flex-col gap-6 bg-white">
