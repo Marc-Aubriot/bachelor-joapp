@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tickets', function (Blueprint $table) {
+        Schema::create('cart_tickets', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('title');
-            $table->string('photo');
-            $table->string('price');
-            $table->string('description');
-            $table->string('color');
-            $table->string('stripe_item_price');
+            $table->string('ticket_id');
+            $table->string('cart_id');
+            $table->integer('quantity')->default(1);
+
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tickets');
+        Schema::dropIfExists('cart_tickets');
     }
 };

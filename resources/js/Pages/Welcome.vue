@@ -94,7 +94,7 @@ export default {
 
             <Header></Header>
 
-            <Carousel :imgNameList=imgList :assetsURL="assetsURL"></Carousel>
+            <Carousel :imgNameList=imgList></Carousel>
 
         </div>
 

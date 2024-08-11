@@ -1,9 +1,17 @@
+<script setup>
+import { usePage } from '@inertiajs/vue3';
+import { computed } from 'vue';
+const page = usePage();
+const user = computed(() => page.props.auth.user);
+</script>
+
 <script>
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import { router } from '@inertiajs/vue3';
 
 export default {
     name: 'Header',
-
+    
     components: {
         ResponsiveNavLink,
     },
@@ -13,16 +21,30 @@ export default {
             hamburgerMenuIsOpen: false,
         }
     },
+
+    methods: {
+        logout() {
+            const page = usePage();
+            router.post(route('logout'));
+        },
+    }
 }
 </script>
 
 <template>
 
     <header class="flex h-120 w-full justify-between absolute top-0 z-50 bg-black bg-opacity-30">
+        
+        <!-- Authentication -->
+        <!-- <form method="POST" @submit.prevent="logout">
+            <ResponsiveNavLink as="button">
+                Log Out
+            </ResponsiveNavLink>
+        </form> -->
 
         <!-- left nav basket and profile -->
         <div class="flex gap-4 ml-4 items-center grow basis-0">
-            <ResponsiveNavLink href="/">
+            <ResponsiveNavLink v-if="user" :href="`/cart/${user.id}`">
                 <img 
                     src="../../../public/assets/shopping-basket.svg" 
                     alt="panier d'achat" 
@@ -31,7 +53,7 @@ export default {
             </ResponsiveNavLink>
 
             <ResponsiveNavLink 
-        
+                v-if="user"
                 href="/"
             >
                 <img 
@@ -42,21 +64,21 @@ export default {
             </ResponsiveNavLink>
 
             <ResponsiveNavLink 
-
+                v-else
                 href="/login"
                 class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1"
             >
                 Se connecter
             </ResponsiveNavLink>
 
-            <ul class="hidden gap-6 md:flex">
+            <!-- <ul class="hidden gap-6 md:flex">
                 <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Relais de la flamme</ResponsiveNavLink>
                 </li>
                 <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Calendrier</ResponsiveNavLink>
                 </li>
-            </ul>
+            </ul> -->
         </div>
         
         <!-- center logo -->
@@ -88,13 +110,13 @@ export default {
             >
 
             <ul class="hidden md:flex justify-between mr-8 gap-6">
-                <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
+                <li class="text-sm xl:text-xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Accueil</ResponsiveNavLink>
                 </li>
-                <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
+                <li class="text-sm xl:text-xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/billets">Billets</ResponsiveNavLink>
                 </li>
-                <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
+                <!-- <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Boutique</ResponsiveNavLink>
                 </li>
                 <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
@@ -102,7 +124,7 @@ export default {
                 </li>
                 <li class="text-sm xl:text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full line-clamp-1">
                     <ResponsiveNavLink href="/">Langues</ResponsiveNavLink>
-                </li>
+                </li> -->
             </ul>
 
         </nav>
