@@ -19,6 +19,6 @@ if this isnt working check: vite.config.js and utilities.js, comment prod / unco
 ## prod build
 change file:
 1- vite.config.js => uncomment prod, comment local
-2- utilities.js => uncomment prod, comment local
+2- ressources/js/utilities.js => uncomment prod, comment local
 3- npm run build
 4- push to main branch
