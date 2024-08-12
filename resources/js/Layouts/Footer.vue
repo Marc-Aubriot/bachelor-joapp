@@ -18,16 +18,16 @@ export default {
 
             <ul class="flex justify-between gap-4 mb-10 sm:mb-0 w-full">
                 <li class="text-white text-sm xl:text-xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
-                    <ResponsiveNavLink href="/">CGV</ResponsiveNavLink>
+                    <ResponsiveNavLink href="/cgv">CGV</ResponsiveNavLink>
                 </li>
                 <li class="text-white text-sm xl:text-xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
-                    <ResponsiveNavLink href="/">CGU</ResponsiveNavLink>
+                    <ResponsiveNavLink href="/cgu">CGU</ResponsiveNavLink>
                 </li>
                 <li class="text-white text-sm xl:text-xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
-                    <ResponsiveNavLink href="/">Politique de confidentialité</ResponsiveNavLink>
+                    <ResponsiveNavLink href="/rgpd">Politique de confidentialité</ResponsiveNavLink>
                 </li>
                 <li class="text-white text-sm xl:text-xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
-                    <ResponsiveNavLink href="/">Mentions légales</ResponsiveNavLink>
+                    <ResponsiveNavLink href="/legals">Mentions légales</ResponsiveNavLink>
                 </li>
             </ul>
 

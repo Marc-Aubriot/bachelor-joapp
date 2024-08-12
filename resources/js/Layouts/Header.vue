@@ -16,6 +16,18 @@ export default {
         ResponsiveNavLink,
     },
 
+    props: {
+        opacity: {
+            type: String,
+            default: 'bg-opacity-20',
+        },
+
+        position: {
+            type: String,
+            default: 'absolute',
+        },
+    },
+
     data() {
         return {
             hamburgerMenuIsOpen: false,
@@ -39,7 +51,7 @@ export default {
 
 <template>
 
-    <header class="flex h-120 w-full justify-between absolute top-0 z-50 bg-black bg-opacity-30">
+    <header :class="`flex h-120 w-full justify-between ${position} top-0 z-50 bg-black ${opacity}`">
         
         <!-- Authentication -->
         <!-- <form method="POST" @submit.prevent="logout">
