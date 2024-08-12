@@ -17,17 +17,20 @@ export default {
         <nav class="flex">
 
             <ul class="flex justify-between gap-4 mb-10 sm:mb-0 w-full">
-                <li class="text-white text-sm xl:text-xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-white text-sm xl:text-md hover:underline underline-offset-8 decoration-2 cursor-pointer">
                     <ResponsiveNavLink href="/cgv">CGV</ResponsiveNavLink>
                 </li>
-                <li class="text-white text-sm xl:text-xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-white text-sm xl:text-md hover:underline underline-offset-8 decoration-2 cursor-pointer">
                     <ResponsiveNavLink href="/cgu">CGU</ResponsiveNavLink>
                 </li>
-                <li class="text-white text-sm xl:text-xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-white text-sm xl:text-md hover:underline underline-offset-8 decoration-2 cursor-pointer">
                     <ResponsiveNavLink href="/rgpd">Politique de confidentialité</ResponsiveNavLink>
                 </li>
-                <li class="text-white text-sm xl:text-xl hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                <li class="text-white text-sm xl:text-md hover:underline underline-offset-8 decoration-2 cursor-pointer">
                     <ResponsiveNavLink href="/legals">Mentions légales</ResponsiveNavLink>
+                </li>
+                <li class="text-white text-sm xl:text-md hover:underline underline-offset-8 decoration-2 cursor-pointer">
+                    <ResponsiveNavLink href="/contact">Contact</ResponsiveNavLink>
                 </li>
             </ul>
 
@@ -48,7 +51,7 @@ export default {
             </ResponsiveNavLink>
         </div>
 
-        <p class="text-white text-sm xl:text-xl">Copyrights 2024 MarcAu</p>
+        <p class="text-white text-sm xl:text-md">Copyrights 2024 MarcAu</p>
 
     </footer>
 
