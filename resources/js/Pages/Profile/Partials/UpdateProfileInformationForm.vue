@@ -15,9 +15,10 @@ const props = defineProps({
 
 const form = useForm({
     _method: 'PUT',
-    name: props.user.name,
+    firstname: props.user.firstname,
+    lastname: props.user.lastname,
     email: props.user.email,
-    photo: null,
+    photo: props.user.profile_photo_path,
 });
 
 const verificationLinkSent = ref(null);
@@ -78,11 +79,11 @@ const clearPhotoFileInput = () => {
 <template>
     <FormSection @submitted="updateProfileInformation">
         <template #title>
-            Profile Information
+            Informations du compte
         </template>
 
         <template #description>
-            Update your account's profile information and email address.
+            Modifier les informations de votre compte.
         </template>
 
         <template #form>
@@ -113,7 +114,7 @@ const clearPhotoFileInput = () => {
                 </div>
 
                 <SecondaryButton class="mt-2 me-2" type="button" @click.prevent="selectNewPhoto">
-                    Select A New Photo
+                    Choisir une nouvelle photo
                 </SecondaryButton>
 
                 <SecondaryButton
@@ -122,22 +123,36 @@ const clearPhotoFileInput = () => {
                     class="mt-2"
                     @click.prevent="deletePhoto"
                 >
-                    Remove Photo
+                    Effacer photo
                 </SecondaryButton>
 
                 <InputError :message="form.errors.photo" class="mt-2" />
             </div>
 
-            <!-- Name -->
+            <!-- Firstname -->
             <div class="col-span-6 sm:col-span-4">
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="firstname" value="Prénom" />
                 <TextInput
-                    id="name"
-                    v-model="form.name"
+                    id="firstname"
+                    v-model="form.firstname"
                     type="text"
                     class="mt-1 block w-full"
                     required
-                    autocomplete="name"
+                    autocomplete="firstname"
+                />
+                <InputError :message="form.errors.name" class="mt-2" />
+            </div>
+
+            <!-- Lastname -->
+            <div class="col-span-6 sm:col-span-4">
+                <InputLabel for="lastname" value="Nom" />
+                <TextInput
+                    id="lastname"
+                    v-model="form.lastname"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                    autocomplete="lastname"
                 />
                 <InputError :message="form.errors.name" class="mt-2" />
             </div>
@@ -179,11 +194,11 @@ const clearPhotoFileInput = () => {
 
         <template #actions>
             <ActionMessage :on="form.recentlySuccessful" class="me-3">
-                Saved.
+                Enregistré.
             </ActionMessage>
 
             <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Save
+                Sauvegarder
             </PrimaryButton>
         </template>
     </FormSection>

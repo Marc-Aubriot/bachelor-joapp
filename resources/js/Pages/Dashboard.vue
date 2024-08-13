@@ -1,22 +1,89 @@
-<script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
-import Welcome from '@/Components/Welcome.vue';
+<script>
+import Header from '@/Layouts/Header.vue';
+import Footer from '@/Layouts/Footer.vue';
+import { Head } from '@inertiajs/vue3';
+import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import Profile from './Profile/Profile.vue';
+import { router } from '@inertiajs/vue3';
+
+export default {
+    name: 'Dashboard',
+
+    components: {
+        Header,
+        Footer,
+        Head,
+        ResponsiveNavLink,
+        Profile,
+    },
+
+    data() {
+        return {
+            currentPage: 'Profile',
+        }
+    },
+
+    methods: {
+        logout() {
+            router.post(route('logout'));
+        },
+    }
+}
 </script>
 
 <template>
-    <AppLayout title="Dashboard">
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
-            </h2>
-        </template>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <Welcome />
+    <Head title="Dashboard"></Head>
+    
+    <main class="h-fit w-screen">
+
+        <Header opacity="bg-opacity-100" position="initial"></Header>
+
+        <section id="billets" class="flex justify-center h-fit w-full py-16 overflow-hidden">
+
+            <div class="w-full md:w-4/5 flex flex-col gap-2">
+
+                <h1 class="text-4xl">Dashboard</h1>
+                
+                <div class="border-t-black border-t w-full"></div>
+
+                <div class="flex w-full h-fit justify-between">
+
+                    <div class="py-8 flex flex-col md:flex-row md:justify-between w-1/6 h-full gap-10">
+
+                        <ul class="flex flex-col gap-2 p-4 w-full h-fit border rounded-md border-black">
+                            <li class="hover:underline underline-offset-8 cursor-pointer" @click="currentPage='Profile'">
+                                <p>Compte</p>
+                            </li>
+                            <li class="hover:underline underline-offset-8 cursor-pointer" @click="currentPage='Tickets'">
+                                <p>Billets</p>
+                            </li>
+                            <li class="hover:underline underline-offset-8 cursor-pointer" @click="currentPage='Orders'">
+                                <p>Factures</p>
+                            </li>
+                            <li class="hover:underline underline-offset-8 cursor-pointer" @click="logout()">
+                                <p>Déconnexion</p>
+                            </li>
+                        </ul>              
+
+                    </div>
+
+                    <div class="w-5/6 h-full py-8">
+
+                        <div class="flex flex-col gap-2  w-full h-full">
+                            <Profile v-if="currentPage == 'Profile'"/>
+                        </div>
+
+                    </div>
+
                 </div>
+
             </div>
-        </div>
-    </AppLayout>
+             
+        </section>
+
+        <Footer></Footer>
+
+    </main>
+  
 </template>

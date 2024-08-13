@@ -72,7 +72,7 @@ export default {
 
             <ResponsiveNavLink 
                 v-if="user"
-                href="/"
+                href="/dashboard"
             >
                 <img 
                     src="../../../public/assets/account-circle.svg" 
