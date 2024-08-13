@@ -1,1 +1,0 @@
-import{_ as t}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{o as r,e,r as s}from"./app-CtreDRx0.js";const n={name:"PrimaryCustomButton"},a={class:"bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"};function m(o,c,i,u,p,_){return r(),e("button",a,[s(o.$slots,"default")])}const l=t(n,[["render",m]]);export{l as P};
