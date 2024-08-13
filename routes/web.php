@@ -23,3 +23,13 @@ Route::get('/rgpd', function() {return Inertia::render('RGPD');})->name('rgpd');
 Route::get('/legals', function() {return Inertia::render('Legals');})->name('legals');
 Route::get('/contact',  [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'sendContactForm'])->name('contact');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+});
