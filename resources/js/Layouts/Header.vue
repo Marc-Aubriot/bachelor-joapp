@@ -1,9 +1,9 @@
-<script setup>
+<!-- <script setup>
 import { usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 const page = usePage();
 const user = computed(() => page.props.auth.user);
-</script>
+</script> -->
 
 <script>
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
@@ -16,15 +16,33 @@ export default {
         ResponsiveNavLink,
     },
 
+    props: {
+        opacity: {
+            type: String,
+            default: 'bg-opacity-20',
+        },
+
+        position: {
+            type: String,
+            default: 'absolute',
+        },
+    },
+
     data() {
         return {
             hamburgerMenuIsOpen: false,
         }
     },
 
+    computed: {
+        user() {
+            return this.$page.props.auth.user;
+        },
+    },
+
     methods: {
         logout() {
-            const page = usePage();
+            //const page = usePage();
             router.post(route('logout'));
         },
     }
@@ -33,7 +51,7 @@ export default {
 
 <template>
 
-    <header class="flex h-120 w-full justify-between absolute top-0 z-50 bg-black bg-opacity-30">
+    <header :class="`flex h-120 w-full justify-between ${position} top-0 z-50 bg-black ${opacity}`">
         
         <!-- Authentication -->
         <!-- <form method="POST" @submit.prevent="logout">
