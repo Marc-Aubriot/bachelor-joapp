@@ -9,3 +9,4 @@
 <x-backpack::menu-item title="Orders" icon="la la-question" :link="backpack_url('order')" />
 <x-backpack::menu-item title="Order carts" icon="la la-question" :link="backpack_url('order-cart')" />
 <x-backpack::menu-item title="User tickets" icon="la la-question" :link="backpack_url('user-ticket')" />
+<x-backpack::menu-item title="Contacts" icon="la la-question" :link="backpack_url('contact')" />
