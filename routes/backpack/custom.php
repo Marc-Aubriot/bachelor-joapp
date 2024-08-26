@@ -19,6 +19,7 @@ Route::group([
     Route::crud('ticket', 'TicketCrudController');
     Route::crud('user', 'UserCrudController');
     Route::crud('article', 'ArticleCrudController');
+    Route::crud('banner-photo', 'BannerPhotoCrudController');
 }); // this should be the absolute last line of this file
 
 /**
