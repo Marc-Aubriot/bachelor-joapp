@@ -6,6 +6,7 @@ use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\QrCodeController;
 use Inertia\Inertia;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
@@ -23,6 +24,7 @@ Route::get('/rgpd', function() {return Inertia::render('RGPD');})->name('rgpd');
 Route::get('/legals', function() {return Inertia::render('Legals');})->name('legals');
 Route::get('/contact',  [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'sendContactForm'])->name('contact');
+Route::get('/qrcode', [QrCodeController::class, 'show']);
 
 Route::middleware([
     'auth:sanctum',
