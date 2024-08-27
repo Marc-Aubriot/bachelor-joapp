@@ -17,7 +17,7 @@ class QrCodeController extends Controller
         ->gradient($from[0], $from[1], $from[2], $to[0], $to[1], $to[2], 'diagonal')
         ->margin(1)
         ->generate(
-            'Hello, World!',
+            'https://dev4a.online/',
         );
     }
 }

@@ -22,6 +22,6 @@ class Ticket extends Model
         'price',
         'description',
         'color',
-        'stripe_item_price'
+        'stripe_item_price',
     ];
 }

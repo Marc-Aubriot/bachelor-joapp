@@ -22,6 +22,6 @@ class UserTicket extends Model
         'order_id',
         'ticket_title',
         'ticket_key',
-
+        'date_used'
     ];
 }
