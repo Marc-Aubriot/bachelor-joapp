@@ -26,9 +26,10 @@ class CheckIfAdmin
      * @return bool
      */
     private function checkIfUserIsAdmin($user)
-    {
-        // return ($user->is_admin == 1);
-        return true;
+    {   
+        $user_role = $user->getRoleNames();
+        if ($user_role[0] == 'admin' || $user_role[0] == 'employee') return true;
+        else return false;
     }
 
     /**
