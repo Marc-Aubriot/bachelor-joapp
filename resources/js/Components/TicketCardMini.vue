@@ -40,6 +40,10 @@ export default {
             type: String,
             default: 1,
         },
+        qrCode: {
+            type: Object,
+            default: {},
+        },
 
         stripeItemPrice: String,
     },

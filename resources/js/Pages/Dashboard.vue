@@ -5,6 +5,7 @@ import { Head } from '@inertiajs/vue3';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import Profile from './Profile/Profile.vue';
 import { router } from '@inertiajs/vue3';
+import MyTickets from './Profile/MyTickets.vue';
 
 export default {
     name: 'Dashboard',
@@ -15,12 +16,23 @@ export default {
         Head,
         ResponsiveNavLink,
         Profile,
+        MyTickets,
+    },
+
+    props: {
+        tickets: {
+            type: Array,
+            default: [],
+        },
     },
 
     data() {
         return {
             currentPage: 'Profile',
         }
+    },
+
+    mounted() {
     },
 
     methods: {
@@ -72,6 +84,7 @@ export default {
 
                         <div class="flex flex-col gap-2  w-full h-full">
                             <Profile v-if="currentPage == 'Profile'"/>
+                            <MyTickets v-if="currentPage == 'Tickets'" :tickets="tickets"/>
                         </div>
 
                     </div>

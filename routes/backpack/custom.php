@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminController;
 
 // --------------------------
 // Custom Backpack Routes
@@ -25,6 +26,7 @@ Route::group([
     Route::crud('order-cart', 'OrderCartCrudController');
     Route::crud('user-ticket', 'UserTicketCrudController');
     Route::crud('contact', 'ContactCrudController');
+    Route::get('ticket-scanner', [AdminController::class, 'ticketScanner']);
 }); // this should be the absolute last line of this file
 
 /**
