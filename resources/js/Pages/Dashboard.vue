@@ -64,13 +64,13 @@ export default {
                     <div class="py-8 flex flex-col md:flex-row md:justify-between w-1/6 h-full gap-10">
 
                         <ul class="flex flex-col gap-2 p-4 w-full h-fit border rounded-md border-black">
-                            <li class="hover:underline underline-offset-8 cursor-pointer" @click="currentPage='Profile'">
+                            <li :class="currentPage == 'Profile' ? 'underline underline-offset-8 cursor-pointer':'hover:underline underline-offset-8 cursor-pointer'" @click="currentPage='Profile'">
                                 <p>Compte</p>
                             </li>
-                            <li class="hover:underline underline-offset-8 cursor-pointer" @click="currentPage='Tickets'">
+                            <li :class="currentPage == 'Tickets' ? 'underline underline-offset-8 cursor-pointer':'hover:underline underline-offset-8 cursor-pointer'" @click="currentPage='Tickets'">
                                 <p>Billets</p>
                             </li>
-                            <li class="hover:underline underline-offset-8 cursor-pointer" @click="currentPage='Orders'">
+                            <li :class="currentPage == 'Orders' ? 'underline underline-offset-8 cursor-pointer':'hover:underline underline-offset-8 cursor-pointer'" @click="currentPage='Orders'">
                                 <p>Factures</p>
                             </li>
                             <li class="hover:underline underline-offset-8 cursor-pointer" @click="logout()">

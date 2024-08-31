@@ -43,7 +43,7 @@ export default {
                 :stripeItemPrice="ticket.stripe_item_price"
                 :quantity="ticket.quantity"
                 :qrCode="ticket.qrCode"
-                :dateUsed="ticket.dateUsed"
+                :dateUsed="ticket.date_used"
             ></TicketCardQr>
         </div>
 

@@ -88,14 +88,19 @@ export default {
 
                 <p>{{ description }}</p>
 
-                <p>--</p>
+                <p v-if="dateUsed != null">Utilisé le :</p>
+                <p v-else>--</p>
             </div>
         </div>
 
         <div class="flex flex-col w-fit gap-4">
             <h3 class="font-bold text-md">Billet</h3>
-            <p v-if="dateUsed != null">Utilisé le : {{ dateUsed }}</p>
+
+            <p v-if="dateUsed != null">--</p>
             <p v-else>Non utilisé</p>
+
+            <p v-if="dateUsed != null">{{ dateUsed.substring(0, 10) }}</p>
+            <p v-else>--</p>
         </div>
 
         <div class="flex flex-col w-fit gap-4">

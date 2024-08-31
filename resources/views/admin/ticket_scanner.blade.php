@@ -25,8 +25,6 @@
                 <p>Clef du billet: <span id="ticket-key"></span></p>
             </div>
 
-            <!-- <a href="{{ route('qrcode.scan', ['ticketcode' => 'test']) }}">test route</a>
-            <button onclick="getDatas()">fetch</button> -->
         </div>
     </div>
 </div>
@@ -87,7 +85,6 @@
                 throw new Error(`Response status: ${response.status}`);
             }
             const json = await response.json();
-            console.log(json);
             clientDatas = json.client_datas;
             ticketDatas = json.ticket_datas;
             hydrateUserDatas();
@@ -222,7 +219,7 @@
     .error {
         background-color: red;
     }
-    
+
     /* ids */
     #container {
         text-align: center;
