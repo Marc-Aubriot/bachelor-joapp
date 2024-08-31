@@ -12,12 +12,14 @@
 
             <div id="qr-result" hidden="">
                 <b>Data:</b> <span id="outputData"></span>
+
+                <button>Valider le billet</button>
             </div>
         </div>
     </div>
 </div>
 <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
-<!-- <script src="./qrCodeScanner.js"></script> -->
+
 <script>
     const qr = window.qrcode;
 
