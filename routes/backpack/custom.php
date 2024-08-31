@@ -26,7 +26,9 @@ Route::group([
     Route::crud('order-cart', 'OrderCartCrudController');
     Route::crud('user-ticket', 'UserTicketCrudController');
     Route::crud('contact', 'ContactCrudController');
-    Route::get('ticket-scanner', [AdminController::class, 'ticketScanner']);
+    Route::get('ticket-scanner', [AdminController::class, 'ticketScanner'])->name('qrcode');
+    Route::post('ticket-scanner', [AdminController::class, 'getClientInfos'])->name('qrcode.scan');
+    Route::post('ticket-scanner/validate', [AdminController::class, 'validateTicket'])->name('qrcode.scan.validate');
 }); // this should be the absolute last line of this file
 
 /**

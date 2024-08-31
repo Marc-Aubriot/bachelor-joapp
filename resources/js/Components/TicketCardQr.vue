@@ -44,6 +44,10 @@ export default {
             type: Object,
             default: {},
         },
+        dateUsed: {
+            type: String,
+            default: null,
+        },
 
         stripeItemPrice: String,
     },
@@ -90,7 +94,8 @@ export default {
 
         <div class="flex flex-col w-fit gap-4">
             <h3 class="font-bold text-md">Billet</h3>
-
+            <p v-if="dateUsed != null">Utilisé le : {{ dateUsed }}</p>
+            <p v-else>Non utilisé</p>
         </div>
 
         <div class="flex flex-col w-fit gap-4">
