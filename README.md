@@ -22,4 +22,4 @@ change file:
 2- ressources/js/utilities.js => uncomment prod, comment local
 3- npm run build
 4- push to main branch
-5- modifier le .htaccess pour qu'il pointe directement sur /public/
+5- modifier le .htaccess pour qu'il pointe directement sur /public/ (copier le .env et le htaccess de la dernière version)
