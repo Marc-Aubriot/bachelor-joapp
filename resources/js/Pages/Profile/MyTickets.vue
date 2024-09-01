@@ -29,9 +29,9 @@ export default {
 </script>
 
 <template>
-    <div class="content">
+    <div class="flex flex-col items-center h-fit w-full">
 
-        <div class="ticket-wrapper">       
+        <div class="w-full md:w-4/5 h-fit">       
             <TicketCardQr
                 v-for="(ticket, index) in tickets"
                 :id="ticket.id"
@@ -50,18 +50,3 @@ export default {
     </div>
     
 </template>
-
-<style>
-.content {
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.ticket-wrapper {
-    width: 80%;
-    height: fit-content;
-}
-</style>

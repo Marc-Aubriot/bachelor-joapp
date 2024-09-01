@@ -12,17 +12,19 @@
 
             <div id="qr-result" hidden="">
                 <b>Billet:</b> <span id="outputData"></span>
-                <button id="validate-button" onclick="validateTicket()" class="validate-button">Valider le billet</button>
             </div>
 
             <div id="user-datas" class="datas" hidden="">
                 <p>Prénom: <span id="user-firstname"></span></p>
-                <p>Nom: <span id="user-lastname"></span></p>
+                <p>Nom: <span id="user-lastname"></span></p>    
                 <p>Email: <span id="user-email"></spanp></p>
                 <p>Clef du compte: <span id="user-accountkey"></span></p>
                 <p>Type de billet: <span id="ticket-title"></span></p>
                 <p>Billet utilisé le: <span id="ticket-dateused"></span></p>
                 <p>Clef du billet: <span id="ticket-key"></span></p>
+                <div class="button-wrapper">
+                    <button id="validate-button" onclick="validateTicket()" class="validate-button">Valider le billet</button>
+                </div>
             </div>
 
         </div>
@@ -187,6 +189,10 @@
         padding: 15px;
     }
     
+    p {
+       font-size: 40px;
+    }
+
     /* classes */
     .main {
         display: flex;
@@ -208,8 +214,19 @@
         text-align: start;
     }
 
+    .button-wrapper {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        justify-content: center
+    }
+
     .validate-button {
         cursor: pointer;
+        background-color: green;
+        font-size: 40px;
+        padding: 40px;
+        border-radius: 16px;
     }
 
     .validation {
@@ -249,5 +266,16 @@
         padding: 20px;
         max-width: 700px;
         background-color: white;
+    }
+
+    @media screen and (min-width: 992px) {
+        p {
+            font-size: 16px;
+        }
+
+        .validate-button {
+            font-size: 16px;
+            padding: 10px;
+        }
     }
 </style>

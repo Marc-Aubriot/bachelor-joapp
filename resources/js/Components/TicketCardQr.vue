@@ -88,22 +88,22 @@ export default {
 
                 <p>{{ description }}</p>
 
-                <p v-if="dateUsed != null">Utilisé le :</p>
-                <p v-else>--</p>
+                <p v-if="dateUsed != null">--</p>
+                <p v-else>Non utilisé</p>
             </div>
         </div>
 
         <div class="flex flex-col w-fit gap-4">
             <h3 class="font-bold text-md">Billet</h3>
 
-            <p v-if="dateUsed != null">--</p>
-            <p v-else>Non utilisé</p>
+            <p v-if="dateUsed != null">Utilisé le :</p>
+            <p v-else>--</p>
 
             <p v-if="dateUsed != null">{{ dateUsed.substring(0, 10) }}</p>
             <p v-else>--</p>
         </div>
 
-        <div class="flex flex-col w-fit gap-4">
+        <div class="flex flex-col items-center w-full md:w-fit gap-4">
             <img :src="`${qrCode[1]}`" alt="" class="qrcode">
         </div>
 
