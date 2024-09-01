@@ -23,3 +23,5 @@ change file:
 3- npm run build
 4- push to main branch
 5- modifier le .htaccess pour qu'il pointe directement sur /public/ (copier le .env et le htaccess de la dernière version)
+6- run command in console : app:init-permissions
+7- run command in console : app:give-role USERID 'admin'
