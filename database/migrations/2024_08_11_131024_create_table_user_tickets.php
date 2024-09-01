@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('order_id');
             $table->string('ticket_title');
             $table->uuid('ticket_key');
+            $table->timestamp('date_used')->nullable();
         });
     }
 

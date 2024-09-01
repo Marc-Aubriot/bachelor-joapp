@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class UserTicket extends Model
 {
+    use CrudTrait;
     use HasFactory;
 
     /**
@@ -20,6 +22,6 @@ class UserTicket extends Model
         'order_id',
         'ticket_title',
         'ticket_key',
-
+        'date_used'
     ];
 }

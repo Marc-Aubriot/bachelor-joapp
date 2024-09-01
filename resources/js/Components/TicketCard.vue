@@ -51,7 +51,7 @@ export default {
         async addToShoppingList() {
             try  {
                 const response = await axios.post(`/addtocart`, {stripe_item_price: this.stripeItemPrice});
-                toaster("Billet enregistré.", "success");
+                toaster("Billet ajouté au panier.", "success");
             } catch (e) {
                 toaster("Erreur lors de l'enregistrement du billet", "error");
                 console.error(e);

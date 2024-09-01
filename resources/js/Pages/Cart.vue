@@ -56,9 +56,9 @@ export default {
 
                 <div v-if="cart != null" class="w-full md:w-4/6 md:h-4/6 md:p-10 rounded-xl flex flex-col bg-white">
 
-                    <h1 class="text-xl font-bold p-2">Mon panier</h1>
+                    <h1 class="text-xl font-bold p-2" v-if="ticketlist">Mon panier ({{ ticketlist.length }} billet)</h1>
                     
-                    <div class="flex w-96 md:w-full h-96 flex-col items-center md:items-start gap-2 overflow-y-scroll mb-2 md:pr-6">
+                    <div class="flex w-92 md:w-full h-96 flex-col items-center md:items-start gap-2 overflow-y-scroll mb-2 md:pr-6">
 
                         <TicketCardMini
                             v-for="(ticket, index) in ticketlist"

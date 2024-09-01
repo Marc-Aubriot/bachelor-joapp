@@ -23,7 +23,7 @@ export default {
 
         <Header opacity="bg-opacity-100" position="initial"></Header>
 
-        <section class="h-screen w-full flex justify-center pt-16">
+        <section class="h-fit w-full flex justify-center py-16">
             
             <div class="w-1/2 flex flex-col gap-10">
                 

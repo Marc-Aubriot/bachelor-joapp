@@ -6,6 +6,7 @@ use App\Models\CartTicket;
 use App\Models\Ticket;
 use App\Models\Order;
 use App\Models\UserTicket;
+use App\Models\Sale;
 use Laravel\Cashier\Cashier;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
@@ -69,6 +70,9 @@ class CheckoutController extends Controller
         //  validate order
         $orderId = $session['metadata']['order_id'] ?? null;
         $order = Order::findOrFail($orderId);
+
+        //  if order isnt already finished, complete order
+        if ($order->status == 'completed') return redirect()->route('home');
         $order->update(['status' => 'completed']);
 
         //  get cart
@@ -78,24 +82,43 @@ class CheckoutController extends Controller
         $tickets = CartTicket::where('cart_id', $cart->id)->join('tickets', 'ticket_id', '=', 'tickets.id')->get();    
 
         //  create ticket in user_tickets
+        $user_tickets = array();
         for ($i = 0; $i<count($tickets); $i++) {
-            UserTicket::create([
+            $ticket = UserTicket::create([
                 'user_id' => $cart->user_id,
                 'ticket_id' => $tickets[$i]->ticket_id,
                 'order_id' => $cart->order_id,
                 'ticket_title' => $tickets[$i]->title,
                 'ticket_key' => Str::uuid(),
             ]);
-        }
+            array_push($user_tickets, $ticket);
+        };
 
         //  update cart
         $cart->is_active = false;
         $cart->save();
 
+        //  update sales for each cart item created, get sale, if sale dont exist create one
+        $sales = array();
+        foreach($user_tickets as $ticket) {
+            $sale = Sale::where('ticket_id', $ticket->ticket_id)->first();
+
+            if($sale == null) {
+                $ticket_price = Ticket::find($ticket->ticket_id);
+                $ticket_price = $ticket_price->price;
+                $sale = new Sale(['ticket_id' => $ticket->ticket_id, 'ticket_title' => $ticket->ticket_title, 'ticket_price' => $ticket_price]);
+                $sale->save();
+            } else {
+                $sale->ticket_sold += 1;
+                $sale->save();
+            }
+            array_push($sales, $sale);
+        };
+
         //  get all user_tickets
         $user_tickets = UserTicket::where('user_id', $cart->user_id);
 
-        return Inertia::render('CheckoutSuccess', [ 'user_tickets' => $user_tickets ]);
+        return Inertia::render('CheckoutSuccess', [ 'userTickets' => $user_tickets, 'sales' => $sales ]);
     }
 
     public function checkoutCancel(Request $request) {

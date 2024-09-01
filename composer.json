@@ -6,16 +6,21 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "backpack/crud": "^6.7",
+        "backpack/theme-tabler": "^1.2",
         "inertiajs/inertia-laravel": "^1.0",
         "laravel/cashier": "^15.4",
         "laravel/framework": "^11.9",
         "laravel/jetstream": "^5.1",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "simplesoftwareio/simple-qrcode": "~4",
+        "spatie/laravel-permission": "^6.9",
         "stripe/stripe-php": "13.8.0",
         "tightenco/ziggy": "^2.0"
     },
     "require-dev": {
+        "backpack/generators": "^4.0",
         "fakerphp/faker": "^1.23",
         "laravel/dusk": "^8.2",
         "laravel/pint": "^1.13",
