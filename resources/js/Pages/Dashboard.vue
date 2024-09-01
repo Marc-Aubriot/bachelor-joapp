@@ -5,6 +5,7 @@ import { Head } from '@inertiajs/vue3';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import Profile from './Profile/Profile.vue';
 import { router } from '@inertiajs/vue3';
+import MyTickets from './Profile/MyTickets.vue';
 
 export default {
     name: 'Dashboard',
@@ -15,12 +16,28 @@ export default {
         Head,
         ResponsiveNavLink,
         Profile,
+        MyTickets,
+    },
+
+    props: {
+        tickets: {
+            type: Array,
+            default: [],
+        },
+        section: {
+            type: String,
+            default: null,
+        },
     },
 
     data() {
         return {
-            currentPage: 'Profile',
+            currentPage: 'profile',
         }
+    },
+
+    mounted() {
+        if (this.section != null) this.currentPage = this.section;
     },
 
     methods: {
@@ -35,30 +52,29 @@ export default {
 
     <Head title="Dashboard"></Head>
     
-    <main class="h-fit w-screen">
+    <main class="h-fit w-full overflow-hidden">
 
         <Header opacity="bg-opacity-100" position="initial"></Header>
 
         <section id="billets" class="flex justify-center h-fit w-full py-16 overflow-hidden">
 
-            <div class="w-full md:w-4/5 flex flex-col gap-2">
+            <div class="w-4/5 flex flex-col gap-2">
 
                 <h1 class="text-4xl">Dashboard</h1>
-                
                 <div class="border-t-black border-t w-full"></div>
 
-                <div class="flex w-full h-fit justify-between">
+                <div class="flex flex-col w-full h-fit justify-between">
 
-                    <div class="py-8 flex flex-col md:flex-row md:justify-between w-1/6 h-full gap-10">
+                    <div class="py-8 flex flex-col md:flex-row md:justify-between w-fit md:w-1/6 h-full gap-10">
 
                         <ul class="flex flex-col gap-2 p-4 w-full h-fit border rounded-md border-black">
-                            <li class="hover:underline underline-offset-8 cursor-pointer" @click="currentPage='Profile'">
+                            <li :class="currentPage == 'profile' ? 'underline underline-offset-8 cursor-pointer':'hover:underline underline-offset-8 cursor-pointer'" @click="currentPage='profile'">
                                 <p>Compte</p>
                             </li>
-                            <li class="hover:underline underline-offset-8 cursor-pointer" @click="currentPage='Tickets'">
+                            <li :class="currentPage == 'tickets' ? 'underline underline-offset-8 cursor-pointer':'hover:underline underline-offset-8 cursor-pointer'" @click="currentPage='tickets'">
                                 <p>Billets</p>
                             </li>
-                            <li class="hover:underline underline-offset-8 cursor-pointer" @click="currentPage='Orders'">
+                            <li :class="currentPage == 'orders' ? 'underline underline-offset-8 cursor-pointer':'hover:underline underline-offset-8 cursor-pointer'" @click="currentPage='orders'">
                                 <p>Factures</p>
                             </li>
                             <li class="hover:underline underline-offset-8 cursor-pointer" @click="logout()">
@@ -68,10 +84,11 @@ export default {
 
                     </div>
 
-                    <div class="w-5/6 h-full py-8">
+                    <div class="flex justify-center w-full h-full py-8">
 
-                        <div class="flex flex-col gap-2  w-full h-full">
-                            <Profile v-if="currentPage == 'Profile'"/>
+                        <div class="flex flex-col gap-2 items-center w-full h-full">
+                            <Profile v-if="currentPage == 'profile'"/>
+                            <MyTickets v-if="currentPage == 'tickets'" :tickets="tickets"/>
                         </div>
 
                     </div>

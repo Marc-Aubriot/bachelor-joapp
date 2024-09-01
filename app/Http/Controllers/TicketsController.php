@@ -46,7 +46,7 @@ class TicketsController extends Controller
 
         if ($cart != null) {
             //  if cart exist, check if item already exist in cart then add item to cart or update quantity
-            $item = CartTicket::where('id', $ticket->id)->first();
+            $item = CartTicket::where('cart_id', $cart->id)->where('ticket_id', $ticket->id)->first();
 
             if ($item) {
                 $item->quantity = $item->quantity + 1;

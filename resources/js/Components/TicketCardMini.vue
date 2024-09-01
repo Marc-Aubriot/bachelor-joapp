@@ -40,6 +40,10 @@ export default {
             type: String,
             default: 1,
         },
+        qrCode: {
+            type: Object,
+            default: {},
+        },
 
         stripeItemPrice: String,
     },
@@ -99,23 +103,6 @@ export default {
 
             <p>Supprimer commande</p>
         </div>
-
-        <!-- <form v-if="user != null" @submit.prevent="addToShoppingList">
-            <button  
-                class="bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"
-                type="submit"
-            >
-                Réserver ce billet
-            </button>
-        </form>
-  
-        <a  
-            v-else
-            class="bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"
-            href="/login"
-        >
-            Réserver ce billet
-        </a> -->
 
     </article>
 

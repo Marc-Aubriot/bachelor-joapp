@@ -101,7 +101,7 @@ export default {
         <main class="h-fit w-full">
 
             <!-- articles section -->
-            <section class="flex justify-center w-screen py-16 overflow-hidden">
+            <section class="flex justify-center w-full py-16 overflow-hidden">
                 
                 <div class="w-4/5 md:w-3/5 flex flex-col gap-8">
 

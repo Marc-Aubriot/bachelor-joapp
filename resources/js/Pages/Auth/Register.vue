@@ -27,16 +27,16 @@ const submit = () => {
 
 <template>  
 
-    <div>
+    <div class="w-full flex flex-col items-center overflow-hidden">
 
         <Head title="Register" />
 
         <div class="h-screen w-full relative overflow-hidden">
             <Header></Header>
-            <img src="../../../../public/assets/jo-2024.jpeg" alt="drapeau des jeux olympiques" class="object-cover w-full h-full">
+            <img src="../../../../public/assets/jo-2024.jpeg" alt="drapeau des jeux olympiques" class="object-cover w-full h-full overflow-hidden">
         </div>
 
-        <div class="absolute h-full w-full top-0 flex justify-center items-center">
+        <div class="absolute h-full w-4/5 top-14 flex justify-center items-center">
             
             <AuthenticationCard>
 
