@@ -151,19 +151,19 @@ export default {
 
     <nav v-if="hamburgerMenuIsOpen == true" class="h-screen md:hidden absolute top-[120px] py-10 z-50 w-full bg-black bg-opacity-30">
         <ul class="flex flex-col md:flex-row gap-4 items-center w-full h-3/5">
-            <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
+            <!-- <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
                 <ResponsiveNavLink href="/">Relais de la flamme</ResponsiveNavLink>
             </li>
             <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
                 <ResponsiveNavLink href="/">Calendrier</ResponsiveNavLink>
-            </li>
+            </li> -->
             <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
                 <ResponsiveNavLink href="/">Accueil</ResponsiveNavLink>
             </li>
             <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
                 <ResponsiveNavLink href="/billets">Billets</ResponsiveNavLink>
             </li>
-            <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
+            <!-- <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
                 <ResponsiveNavLink href="/">Boutique</ResponsiveNavLink>
             </li>
             <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
@@ -171,7 +171,7 @@ export default {
             </li>
             <li class="text-2xl hover:bg-amber-200 transition ease-in-out duration-300 cursor-pointer bg-white p-4 rounded-full">
                 <ResponsiveNavLink href="/">Langues</ResponsiveNavLink>
-            </li>
+            </li> -->
         </ul>
     </nav>
     
