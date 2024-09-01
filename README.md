@@ -20,8 +20,9 @@ if this isnt working check: vite.config.js and utilities.js, comment prod / unco
 change file:
 1- vite.config.js => uncomment prod, comment local
 2- ressources/js/utilities.js => uncomment prod, comment local
-3- npm run build
-4- push to main branch
-5- modifier le .htaccess pour qu'il pointe directement sur /public/ (copier le .env et le htaccess de la dernière version)
-6- run command in console : app:init-permissions
-7- run command in console : app:give-role USERID 'admin'
+3- ticket_scanner.blade.php => uncomment prod, comment local
+4- npm run build
+5- push to main branch
+6- modifier le .htaccess pour qu'il pointe directement sur /public/ (copier le .env et le htaccess de la dernière version)
+7- run command in console : app:init-permissions
+8- run command in console : app:give-role USERID 'admin'
