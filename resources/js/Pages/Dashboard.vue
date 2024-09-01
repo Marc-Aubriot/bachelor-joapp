@@ -24,15 +24,20 @@ export default {
             type: Array,
             default: [],
         },
+        section: {
+            type: String,
+            default: null,
+        },
     },
 
     data() {
         return {
-            currentPage: 'Profile',
+            currentPage: 'profile',
         }
     },
 
     mounted() {
+        if (this.section != null) this.currentPage = this.section;
     },
 
     methods: {
@@ -64,13 +69,13 @@ export default {
                     <div class="py-8 flex flex-col md:flex-row md:justify-between w-1/6 h-full gap-10">
 
                         <ul class="flex flex-col gap-2 p-4 w-full h-fit border rounded-md border-black">
-                            <li :class="currentPage == 'Profile' ? 'underline underline-offset-8 cursor-pointer':'hover:underline underline-offset-8 cursor-pointer'" @click="currentPage='Profile'">
+                            <li :class="currentPage == 'profile' ? 'underline underline-offset-8 cursor-pointer':'hover:underline underline-offset-8 cursor-pointer'" @click="currentPage='profile'">
                                 <p>Compte</p>
                             </li>
-                            <li :class="currentPage == 'Tickets' ? 'underline underline-offset-8 cursor-pointer':'hover:underline underline-offset-8 cursor-pointer'" @click="currentPage='Tickets'">
+                            <li :class="currentPage == 'tickets' ? 'underline underline-offset-8 cursor-pointer':'hover:underline underline-offset-8 cursor-pointer'" @click="currentPage='tickets'">
                                 <p>Billets</p>
                             </li>
-                            <li :class="currentPage == 'Orders' ? 'underline underline-offset-8 cursor-pointer':'hover:underline underline-offset-8 cursor-pointer'" @click="currentPage='Orders'">
+                            <li :class="currentPage == 'orders' ? 'underline underline-offset-8 cursor-pointer':'hover:underline underline-offset-8 cursor-pointer'" @click="currentPage='orders'">
                                 <p>Factures</p>
                             </li>
                             <li class="hover:underline underline-offset-8 cursor-pointer" @click="logout()">
@@ -83,8 +88,8 @@ export default {
                     <div class="w-5/6 h-full py-8">
 
                         <div class="flex flex-col gap-2  w-full h-full">
-                            <Profile v-if="currentPage == 'Profile'"/>
-                            <MyTickets v-if="currentPage == 'Tickets'" :tickets="tickets"/>
+                            <Profile v-if="currentPage == 'profile'"/>
+                            <MyTickets v-if="currentPage == 'tickets'" :tickets="tickets"/>
                         </div>
 
                     </div>

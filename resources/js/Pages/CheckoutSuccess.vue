@@ -41,7 +41,7 @@ export default {
                     <h1 class="text-xl font-bold">Paiement réussi</h1>
                     <a  
                         class="bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"
-                        :href="`/billets`"
+                        :href="`/dashboard?section=tickets`"
                     >
                         Voir mes billets
                     </a>

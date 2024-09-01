@@ -10,7 +10,7 @@ use App\Models\Ticket;
 
 class DashboardController extends Controller
 {
-    public function index() {
+    public function index($section = null) {
         $user = Auth::user();
         $tickets = UserTicket::where('user_id', $user->id)->join('tickets', 'ticket_id', '=', 'tickets.id')->get();
 
@@ -20,6 +20,7 @@ class DashboardController extends Controller
 
         return Inertia::render('Dashboard', [
             'tickets' => $tickets,
+            'section' => $section,
         ]);
     }
 }

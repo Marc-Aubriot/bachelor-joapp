@@ -16,7 +16,7 @@ class LegalsController extends Controller
     }
 
     public function rgpd() {
-        return Inertia::render('RGPQ');
+        return Inertia::render('RGPD');
     }
 
     public function legals() {

@@ -11,7 +11,7 @@ export default {
         tickets: {
             type: Array,
             default: [],
-        }
+        },
     },
 
     mounted() {

@@ -33,7 +33,7 @@ const submit = () => {
 
 <template>  
 
-    <div>
+    <div class="w-full flex flex-col items-center overflow-hidden">
 
         <Head title="Log in" />
 
@@ -42,7 +42,7 @@ const submit = () => {
             <img src="../../../../public/assets/jo-2024.jpeg" alt="drapeau des jeux olympiques" class="object-cover w-full h-full">
         </div>
 
-            <div class="absolute h-full w-full top-0 flex justify-center items-center">
+            <div class="absolute h-full w-4/5 top-0 flex justify-center items-center">
             <AuthenticationCard>
                 <template #logo>
                     <AuthenticationCardLogo />
