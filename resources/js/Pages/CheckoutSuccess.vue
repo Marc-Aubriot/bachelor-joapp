@@ -10,7 +10,18 @@ export default {
         Header,
         Footer,
         Head,
-    }
+    },
+    
+    props: {
+        userTickets: {
+            type: Array,
+            default: [],
+        },
+        sales: {
+            type: Array,
+            default: {},
+        },
+    },
 }
 </script>
 
