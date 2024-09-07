@@ -6,6 +6,7 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import Profile from './Profile/Profile.vue';
 import { router } from '@inertiajs/vue3';
 import MyTickets from './Profile/MyTickets.vue';
+import MyOrders from './Profile/MyOrders.vue';
 
 export default {
     name: 'Dashboard',
@@ -17,10 +18,15 @@ export default {
         ResponsiveNavLink,
         Profile,
         MyTickets,
+        MyOrders,
     },
 
     props: {
         tickets: {
+            type: Array,
+            default: [],
+        },
+        orders: {
             type: Array,
             default: [],
         },
@@ -89,6 +95,7 @@ export default {
                         <div class="flex flex-col gap-2 items-center w-full h-full">
                             <Profile v-if="currentPage == 'profile'"/>
                             <MyTickets v-if="currentPage == 'tickets'" :tickets="tickets"/>
+                            <MyOrders v-if="currentPage == 'orders'" :orders="orders"/>
                         </div>
 
                     </div>
