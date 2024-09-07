@@ -4,6 +4,7 @@ import Header from '@/Layouts/Header.vue';
 import Footer from '@/Layouts/Footer.vue';
 import Carousel from '@/Components/Carousel.vue';
 import { getImgPath } from '@/utilities';
+import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
 export default {
     name: "Welcome",
@@ -13,6 +14,7 @@ export default {
         Footer,
         Carousel,
         Head,
+        ResponsiveNavLink,
     },
 
     props: {
@@ -47,10 +49,6 @@ export default {
 
     methods: {
         getImgPath,
-
-        loadArticle(articleId) {
-            console.log("loading this article");
-        },
 
         previousNewsPage() {
             if (this.newsCurrentPage > 0) {
@@ -110,18 +108,19 @@ export default {
                     <div class="border-t-black border-t py-8 flex flex-col md:flex-row md:justify-between w-full gap-10">
 
                         <article v-for="(article, index) in articlesForThisPage" class="flex flex-col w-full gap-6">
-                              
-                            <img 
-                                :src="getImgPath(article.photo)" 
-                                :alt="article.alt" 
-                                class="cursor-pointer hover:scale-110 rounded-md h-48 w-full"
-                                @click="loadArticle(article.id)"
-                            >
+                            <ResponsiveNavLink :href="`/article/${article.id}`">
+                                <img 
+                                    :src="getImgPath(article.photo)" 
+                                    :alt="article.alt" 
+                                    class="cursor-pointer hover:scale-110 rounded-md h-48 w-full"
+                                >
+                            </ResponsiveNavLink>
 
-                            <h5 
-                                class="cursor-pointer hover:underline hover:underline-offset-4 w-33" 
-                                @click="loadArticle(article.id)"
-                            >{{ article.title }}</h5>   
+                            <ResponsiveNavLink :href="`/article/${article.id}`">
+                                <h5 
+                                    class="cursor-pointer hover:underline hover:underline-offset-4 w-33" 
+                                >{{ article.title }}</h5>   
+                            </ResponsiveNavLink>
 
                         </article>
 
