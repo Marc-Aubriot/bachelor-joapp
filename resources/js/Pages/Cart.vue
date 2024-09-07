@@ -21,24 +21,40 @@ export default {
     props: {
         cart: Object,
         ticketlist: Array,
+        ticketsids: Array,
     },
 
     computed: {
         user() {
             return this.$page.props.auth.user;
         },
-
-        totalAmount() {
-            let totalAmount = 0;
-
-            for (let i=0; i<this.ticketlist.length; i++) {
-                totalAmount = totalAmount + (this.ticketlist[i].quantity * this.ticketlist[i].price);
-            }
-
-            return totalAmount;
-        },  
     },
 
+    data() {
+        return {
+            itemsInCart: null,
+            totalOrder: null,
+        }
+    },
+
+    mounted() {
+        let totalAmount = 0;
+        for (let i=0; i<this.ticketlist.length; i++) {
+            totalAmount = totalAmount + (this.ticketlist[i].quantity * this.ticketlist[i].price);
+        }
+        this.totalOrder = totalAmount;
+    },
+
+    methods: {
+        updateCart(method, price) {
+            if (method == 'add') this.totalOrder = this.totalOrder + Number(price);
+            else this.totalOrder = this.totalOrder - Number(price);
+        },
+
+        deleteItem(itemId) {
+            console.log(arg1);
+        }   
+    }
 }
 </script>
 
@@ -62,7 +78,7 @@ export default {
 
                         <TicketCardMini
                             v-for="(ticket, index) in ticketlist"
-                            :id="ticket.id"
+                            :id="ticketsids[index]"
                             :title="ticket.title" 
                             :photo="ticket.photo"
                             :price="ticket.price"
@@ -70,6 +86,8 @@ export default {
                             :color="ticket.color"
                             :stripeItemPrice="ticket.stripe_item_price"
                             :quantity="ticket.quantity"
+                            @update-cart="updateCart"
+                            @delete-item="deleteItem"
                         ></TicketCardMini>
 
                     </div>
@@ -85,7 +103,7 @@ export default {
                     <h2 class="text-xl font-bold">Ma facture</h2>
 
                     <div>
-                        <p>Total: {{ totalAmount }}</p>
+                        <p>Total: {{ totalOrder }}</p>
                     </div>
 
                     <a  

@@ -37,7 +37,7 @@ export default {
             default: "black"
         },
         quantity: {
-            type: String,
+            type: Number,
             default: 1,
         },
         qrCode: {
@@ -54,25 +54,64 @@ export default {
         },
     },
 
+    data() {
+        return {
+            showArticle: true,
+            ticketAmount: null,
+        }
+    },
+
+    mounted() {
+        this.ticketAmount = this.quantity;
+    },
+
     methods: {
         getImgPath,
 
-        async addToShoppingList() {
+        async updateTicket(method) {
+
+            if (this.ticketAmount <= 1 && method == 'substract') return toaster("Une quantité minimum est requise.", "error");
             try  {
-                const response = await axios.post(`/addtocart`, {stripe_item_price: this.stripeItemPrice});
-                toaster("Billet enregistré.", "success");
+                const response = await axios.post(`/cart/update/${this.id}`, {'method': method});
+
+                if (response.data.message == 'success') {
+                    if (method == 'add') this.ticketAmount++;
+                    else this.ticketAmount--;
+                    toaster("Quantité modifiée.", "success");
+                    this.$emit('update-cart', method, this.price);
+                } else if (response.data.message == 'error') {
+                    toaster("Erreur lors de la modification de la quantité.", "error");
+                }
+                
             } catch (e) {
-                toaster("Erreur lors de l'enregistrement du illet", "error");
+                toaster("Erreur lors de la mise à jour du billet", "error");
                 console.error(e);
             }
         },
+
+        async deleteTicket() {
+            try  {
+                const response = await axios.post(`/cart/delete/${this.id}`);
+                
+                if (response.data.message == 'success') {
+                    this.showArticle = false;
+                    toaster("Billet supprimé.", "success");
+                    this.$emit('delete-item', this.id);
+                } else if (response.data.message == 'error') {
+                    toaster("Erreur lors de la suppression du billet.", "error");
+                }
+            } catch (e) {
+                toaster("Erreur lors de l'effacement du billet", "error");
+                console.error(e);
+            }
+        }
     }
 }
 </script>
 
 <template>
 
-    <article :class="`flex flex-col mb-5 md:flex-row gap-2 w-80 md:w-full md:gap-10 rounded-lg justify-between shadow-lg shadow-${color}-500/50 md:h-40 p-2 md:p-10`">
+    <article v-if="showArticle" :class="`flex flex-col mb-5 md:flex-row gap-2 w-80 md:w-full md:gap-10 rounded-lg justify-between shadow-lg shadow-${color}-500/50 md:h-40 p-2 md:p-10`">
 
         <div class="flex w-fit gap-10">
             <div class="flex flex-col w-fit gap-10">
@@ -91,17 +130,20 @@ export default {
         <div class="flex flex-col w-fit gap-4">
             <h3 class="font-bold text-md">Coût total</h3>
 
-            <p>Quantité: {{ quantity }}</p>
+            <p>Quantité: {{ ticketAmount }}</p>
 
-            <p>Prix total: {{ quantity*price }} €</p>
+            <p>Prix total: {{ ticketAmount*price }} €</p>
         </div>
 
         <div class="flex flex-col w-fit gap-4">
             <h3 class="font-bold text-md">Modifier ma commande</h3>
 
-            <p>- + Valider</p>
+            <div class="flex w-full gap-2 justify-between">
+                <button class="bg-yellow-200 px-2 flex justify-center" @click="updateTicket('substract')">Retirer 1</button>
+                <button class="bg-yellow-200 px-2 flex justify-center" @click="updateTicket('add')">Ajouter 1</button>
+            </div>
 
-            <p>Supprimer commande</p>
+            <button class="bg-red-300 px-2 flex justify-center" @click="deleteTicket()">Supprimer commande</button>
         </div>
 
     </article>
