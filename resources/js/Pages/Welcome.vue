@@ -29,8 +29,12 @@ export default {
             required: false,
         },
         imgList: {
-            typ: Array,
+            type: Array,
             required: false,
+        },
+        ticketlist: {
+            type: Array,
+            default: []
         },
     },
 
@@ -90,7 +94,7 @@ export default {
 
         <div class="h-screen relative">
 
-            <Header></Header>
+            <Header :ticketsCount="ticketlist ? ticketlist.length : 0"></Header>
 
             <Carousel :imgNameList=imgList></Carousel>
 

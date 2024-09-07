@@ -34,6 +34,10 @@ export default {
             type: String,
             default: null,
         },
+        ticketlist: {
+            type: Array,
+            default: []
+        }
     },
 
     data() {
@@ -60,7 +64,7 @@ export default {
     
     <main class="h-fit w-full overflow-hidden">
 
-        <Header opacity="bg-opacity-100" position="initial"></Header>
+        <Header opacity="bg-opacity-100" :ticketsCount="ticketlist ? ticketlist.length : 0"></Header>
 
         <section id="billets" class="flex justify-center h-fit w-full py-16 overflow-hidden">
 

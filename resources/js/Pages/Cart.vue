@@ -48,7 +48,7 @@ export default {
     <div class="h-fit w-full overflow-hidden">
 
         <div class="h-screen w-full relative">
-            <Header></Header>
+            <Header :ticketsCount="ticketlist ? ticketlist.length : 0"></Header>
 
             <img src="../../../public/assets/st-quentin.jpg" alt="Drapeau des jeux olympiques de Paris 2024" class="object-cover h-full w-full">
 
