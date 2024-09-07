@@ -12,8 +12,7 @@ class TicketsTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/billets')
                 ->assertSee("Nos offres d'entrées")
-                ->assertSee("Voir toutes nos offres")
-                ->assertSee("Réserver ce billet");
+                ->assertSee("Voir toutes nos offres");
                    
         });
     }

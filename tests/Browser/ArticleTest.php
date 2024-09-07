@@ -5,13 +5,14 @@ namespace Tests\Browser;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class ContactTest extends DuskTestCase
+class ArticleTest extends DuskTestCase
 {
     public function testRendering(): void
     {
+
         $this->browse(function (Browser $browser) {
-            $browser->visit('/contact')
-                    ->assertSee("Formulaire de contact");
+            $browser->visit('/article/1')
+                    ->assertSee("Contenu généré par chat-gpt");
         });
     }
 }

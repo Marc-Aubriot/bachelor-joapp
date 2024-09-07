@@ -23,7 +23,7 @@ class CartController extends Controller
 
         //  get a list of each items with corresponding ticket info to populate view
         $ticket_list = null;
-        $ticket_types = null;
+        $ticket_ids = null;
 
         if ($cart != null) {
             $ticket_list = CartTicket::where('cart_id', $cart->id)->join('tickets', 'ticket_id', '=', 'tickets.id')->get();

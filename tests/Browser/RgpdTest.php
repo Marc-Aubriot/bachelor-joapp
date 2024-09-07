@@ -7,7 +7,7 @@ use Tests\DuskTestCase;
 
 class RgpdTest extends DuskTestCase
 {
-    public function rendering(): void
+    public function testRendering(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/rgpd')

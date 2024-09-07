@@ -58,6 +58,7 @@ const submit = () => {
                         <TextInput
                             id="email"
                             v-model="form.email"
+                            name="email"
                             type="email"
                             class="mt-1 block w-full"
                             required
@@ -72,6 +73,7 @@ const submit = () => {
                         <TextInput
                             id="password"
                             v-model="form.password"
+                            name="password"
                             type="password"
                             class="mt-1 block w-full"
                             required
@@ -97,7 +99,7 @@ const submit = () => {
                             Réinitialiser mdp
                         </Link>
 
-                        <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                        <PrimaryButton name="login" class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                             Connexion
                         </PrimaryButton>
                     </div>
