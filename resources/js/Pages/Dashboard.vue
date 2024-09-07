@@ -63,9 +63,9 @@ export default {
                 <h1 class="text-4xl">Dashboard</h1>
                 <div class="border-t-black border-t w-full"></div>
 
-                <div class="flex flex-col w-full h-fit justify-between">
+                <div class="flex flex-col md:flex-row w-full h-fit justify-between">
 
-                    <div class="py-8 flex flex-col md:flex-row md:justify-between w-fit md:w-1/6 h-full gap-10">
+                    <div class="py-8 flex flex-col md:flex-row w-full md:justify-between md:w-1/6 h-full gap-10">
 
                         <ul class="flex flex-col gap-2 p-4 w-full h-fit border rounded-md border-black">
                             <li :class="currentPage == 'profile' ? 'underline underline-offset-8 cursor-pointer':'hover:underline underline-offset-8 cursor-pointer'" @click="currentPage='profile'">

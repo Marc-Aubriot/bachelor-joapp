@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\CartTicket;
-use App\Models\Ticket;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 

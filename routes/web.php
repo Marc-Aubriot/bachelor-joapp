@@ -9,6 +9,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\LegalsController;
+use App\Http\Controllers\ArticleController;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
 Route::get('/billets', [TicketsController::class, 'index'])->name('tickets');
@@ -26,6 +27,7 @@ Route::get('/legals', [LegalsController::class, 'legals'])->name('legals');
 Route::get('/contact',  [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'sendContactForm'])->name('contact');
 Route::get('/qrcode', [QrCodeController::class, 'show']);
+Route::get('/article/{articleid}', [ArticleController::class, 'index']);
 
 Route::middleware([
     'auth:sanctum',
