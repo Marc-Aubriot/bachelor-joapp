@@ -5,9 +5,9 @@ namespace Tests\Browser;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class ContactTest extends DuskTestCase
+class LContactTest extends DuskTestCase
 {
-    public function testRendering(): void
+    public function testContactPageRendering(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/contact')

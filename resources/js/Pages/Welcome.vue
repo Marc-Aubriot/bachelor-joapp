@@ -133,19 +133,13 @@ export default {
                     <div class="flex justify-end w-full">
 
                         <div class="flex gap-2">
-                            <img 
-                                src="../../../public/assets/little-arrow-left.svg" 
-                                alt="petite flèche à gauche" 
-                                class="cursor-pointer"
-                                @click="previousNewsPage"
-                            >
+                            <button name="articleLeftArrowNav" @click="previousNewsPage">
+                                <img src="../../../public/assets/little-arrow-left.svg" alt="petite flèche à gauche">
+                            </button>
                             <p>{{ newsCurrentPage+1 }}/{{ articleSubList.length }}</p>
-                            <img 
-                                src="../../../public/assets/little-arrow-right.svg" 
-                                alt="petite flèche à droite" 
-                                class="cursor-pointer"
-                                @click="nextNewsPage"
-                            >
+                            <button name="articleRightArrowNav" @click="nextNewsPage">
+                                <img src="../../../public/assets/little-arrow-right.svg" alt="petite flèche à droite">
+                            </button>
                         </div>
 
                     </div>

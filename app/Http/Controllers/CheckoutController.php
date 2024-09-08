@@ -17,9 +17,12 @@ class CheckoutController extends Controller
     public function index(Request $request, string $userid, string $cartid) {
         //  get active cart
         $cart = Cart::where('user_id', $userid)->where('is_active', true)->first();
+        if ($cart == null) return response(['message'=>'cart not fund']);
 
         //  get all tickets and amount_paid for this cart
         $items = CartTicket::where('cart_id', $cartid)->get()->toArray();
+        if ($items == null) return response(['message'=>'tickets not fund']);
+        
         $line_items = array();
         $amount_paid = 0;
     

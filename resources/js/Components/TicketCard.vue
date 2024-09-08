@@ -36,6 +36,10 @@ export default {
             type: String,
             default: "black"
         },
+        index: {
+            type: String,
+            default: null
+        },
         stripeItemPrice: String,
     },
 
@@ -51,7 +55,11 @@ export default {
         async addToShoppingList() {
             try  {
                 const response = await axios.post(`/addtocart`, {stripe_item_price: this.stripeItemPrice});
-                toaster("Billet ajouté au panier.", "success");
+
+                if (response.data.message == 'cart updated') toaster("Billet ajouté à votre panier.", "success");
+                else if (response.data.message == 'cart created') toaster("Billet ajouté à votre panier.", "success");
+                else if (response.data.message == 'user not logged in') toaster("Vous devez vous connecter pour ajouter un billet au panier.", "info");
+                else toaster("Erreur lors de l'ajout du billet", "error");
             } catch (e) {
                 toaster("Erreur lors de l'enregistrement du billet", "error");
                 console.error(e);
@@ -73,22 +81,15 @@ export default {
 
         <p>{{ price }}€</p>
 
-        <form v-if="user != null" @submit.prevent="addToShoppingList">
+        <form @submit.prevent="addToShoppingList">
             <button  
                 class="bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"
                 type="submit"
+                :name="`ticket-button-${index}`"
             >
                 Réserver ce billet
             </button>
         </form>
-  
-        <a  
-            v-else
-            class="bg-amber-200 p-4 rounded-sm hover:bg-amber-400 transition ease-in-out duration-300"
-            href="/login"
-        >
-            Réserver ce billet
-        </a>
 
     </article>
 

@@ -36,6 +36,10 @@ export default {
             type: String,
             default: "black"
         },
+        index: {
+            type: String,
+            default: null
+        },
         quantity: {
             type: Number,
             default: 1,
@@ -139,11 +143,11 @@ export default {
             <h3 class="font-bold text-md">Modifier ma commande</h3>
 
             <div class="flex w-full gap-2 justify-between">
-                <button class="bg-yellow-200 px-2 flex justify-center" @click="updateTicket('substract')">Retirer 1</button>
-                <button class="bg-yellow-200 px-2 flex justify-center" @click="updateTicket('add')">Ajouter 1</button>
+                <button :name="`decrementTicket-${index}`" class="bg-yellow-200 px-2 flex justify-center" @click="updateTicket('substract')">Retirer 1</button>
+                <button :name="`incrementTicket-${index}`" class="bg-yellow-200 px-2 flex justify-center" @click="updateTicket('add')">Ajouter 1</button>
             </div>
 
-            <button class="bg-red-300 px-2 flex justify-center" @click="deleteTicket()">Supprimer commande</button>
+            <button :name="`deleteTicket-${index}`" class="bg-red-300 px-2 flex justify-center" @click="deleteTicket()">Supprimer commande</button>
         </div>
 
     </article>

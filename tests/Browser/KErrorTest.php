@@ -5,9 +5,9 @@ namespace Tests\Browser;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class ErrorTest extends DuskTestCase
+class KErrorTest extends DuskTestCase
 {
-    public function testLinks(): void
+    public function testErrorPageRendering(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/testlol')

@@ -4,16 +4,28 @@ namespace Tests\Browser;
 
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
-use App\Models\User;
 
-class DashboardTest extends DuskTestCase
+class BLoginTest extends DuskTestCase
 {
+
+    public function testFormRendering(): void
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/login')
+                ->pause(1000)
+                ->assertSee("Email")
+                ->assertSee("Mot de passe")
+                ->assertSee("Créer un compte")
+                ->assertSee("Réinitialiser mdp")
+                ->assertSee("CONNEXION");  
+        });
+    }
+
     public function testLoginFalse(): void
     {
 
         $this->browse(function (Browser $browser) {
-            $browser->visit('/dashboard')
-                    ->type('email', 'marc.aubriot@outlook.fr')
+            $browser->type('email', 'marc.aubriot@outlook.fr')
                     ->type('password', 'password')
                     ->press('login')
                     ->pause(2000)
@@ -27,7 +39,7 @@ class DashboardTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/dashboard')
                     ->type('email', 'marc.aubriot@outlook.fr')
-                    ->type('password', 'password')
+                    ->type('password', 'Demopass1!')
                     ->press('login')
                     ->pause(4000)
                     ->visit('/')

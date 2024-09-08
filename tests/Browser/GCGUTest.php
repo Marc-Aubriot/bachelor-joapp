@@ -5,9 +5,9 @@ namespace Tests\Browser;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class CGUTest extends DuskTestCase
+class GCGUTest extends DuskTestCase
 {
-    public function testRendering(): void
+    public function testCguPageRendering(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/cgu')

@@ -83,6 +83,7 @@ export default {
                             :description="ticket.description"
                             :color="ticket.color"
                             :stripeItemPrice="ticket.stripe_item_price"
+                            :index=index
                         ></TicketCard>
 
                     </div>

@@ -86,6 +86,7 @@ export default {
                             :color="ticket.color"
                             :stripeItemPrice="ticket.stripe_item_price"
                             :quantity="ticket.quantity"
+                            :index="index"
                             @update-cart="updateCart"
                             @delete-item="deleteItem"
                         ></TicketCardMini>

@@ -54,6 +54,9 @@ class TicketsController extends Controller
 
         //  get the user
         $user = Auth::user();
+
+        if ($user == null) return response([ 'message' => 'user not logged in']);
+
         $user_id = $user->id;
 
         //  get the cart

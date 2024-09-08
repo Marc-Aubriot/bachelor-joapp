@@ -46,6 +46,7 @@ export default {
         <!-- carousel imgs -->
         <img 
             v-for="(img, index) in imgNameList"
+            :id="`galleryPhoto-${index}`"
             :src="getImgPath(img.name)" alt="photo de Bercy" 
             :class="currentIndex == index ?
                 'absolute top-0 object-cover h-full w-full duration-700 ease-in-out'
@@ -55,37 +56,35 @@ export default {
         >
 
         <!-- left btn -->
-        <div>
+        <button name="galleryNavLeftButton" @click="previousImg">
             <img 
                 v-if="currentIndex > 0"
                 src="../../../public/assets/arrow-left-2.svg" alt="flèche gauche" 
                 class="absolute top-1/2 left-10 hover:-translate-y-1 hover:scale-110 duration-50 transition ease-in-out delay-50 cursor-pointer" 
-                @click="previousImg"
             >
-        </div>
+        </button>
 
         <!-- right btn -->
-        <div>
+        <button name="galleryNavRightButton" @click="nextImg">
             <img 
                 v-if="currentIndex < 4"
                 src="../../../public/assets/arrow-right-2.svg" alt="flèche droite" 
                 class="absolute top-1/2 right-10 hover:-translate-y-1 hover:scale-110 duration-50 transition ease-in-out delay-50 cursor-pointer" 
-                @click="nextImg"
             >
-        </div>
+        </button>
 
         <!-- dot line -->
         <div class="absolute bottom-14   left-1/3 flex gap-5 w-1/3 justify-center">
 
-            <img 
-                v-for="(dot, index) in imgNameList"
-                src="../../../public/assets/circle.svg" 
-                alt="icône de page ronde" 
-                :class="currentIndex == index ? 
-                    'cursor-pointer scale-150' 
-                    : 'hover:scale-150 duration-50 transition ease-in-out delay-50 cursor-pointer'" 
-                @click="loadImgByIndex(index)"
-            >
+            <button v-for="(dot, index) in imgNameList" :name="`galleryDotButton-${indexs}`" @click="loadImgByIndex(index)">
+                <img 
+                    src="../../../public/assets/circle.svg" 
+                    alt="icône de page ronde" 
+                    :class="currentIndex == index ? 
+                        'cursor-pointer scale-150' 
+                        : 'hover:scale-150 duration-50 transition ease-in-out delay-50'" 
+                >
+            </button>
 
         </div>
 

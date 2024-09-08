@@ -5,9 +5,9 @@ namespace Tests\Browser;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class RgpdTest extends DuskTestCase
+class JRgpdTest extends DuskTestCase
 {
-    public function testRendering(): void
+    public function testRgpdPageRendering(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/rgpd')
