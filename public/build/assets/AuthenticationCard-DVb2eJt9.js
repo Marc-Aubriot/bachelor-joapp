@@ -1,0 +1,1 @@
+import{_ as o}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{o as t,c as r,h as s}from"./app-sxmKPskq.js";const n={},c={class:"w-full sm:max-w-md rounded-xl px-6 py-4 bg-white shadow-md overflow-hidden"};function a(e,d){return t(),r("div",c,[s(e.$slots,"default")])}const m=o(n,[["render",a]]);export{m as A};

@@ -4,6 +4,7 @@ import Header from '@/Layouts/Header.vue';
 import Footer from '@/Layouts/Footer.vue';
 import Carousel from '@/Components/Carousel.vue';
 import { getImgPath } from '@/utilities';
+import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
 export default {
     name: "Welcome",
@@ -13,6 +14,7 @@ export default {
         Footer,
         Carousel,
         Head,
+        ResponsiveNavLink,
     },
 
     props: {
@@ -27,8 +29,12 @@ export default {
             required: false,
         },
         imgList: {
-            typ: Array,
+            type: Array,
             required: false,
+        },
+        ticketlist: {
+            type: Array,
+            default: []
         },
     },
 
@@ -47,10 +53,6 @@ export default {
 
     methods: {
         getImgPath,
-
-        loadArticle(articleId) {
-            console.log("loading this article");
-        },
 
         previousNewsPage() {
             if (this.newsCurrentPage > 0) {
@@ -92,7 +94,7 @@ export default {
 
         <div class="h-screen relative">
 
-            <Header></Header>
+            <Header :ticketsCount="ticketlist ? ticketlist.length : 0"></Header>
 
             <Carousel :imgNameList=imgList></Carousel>
 
@@ -110,18 +112,19 @@ export default {
                     <div class="border-t-black border-t py-8 flex flex-col md:flex-row md:justify-between w-full gap-10">
 
                         <article v-for="(article, index) in articlesForThisPage" class="flex flex-col w-full gap-6">
-                              
-                            <img 
-                                :src="getImgPath(article.photo)" 
-                                :alt="article.alt" 
-                                class="cursor-pointer hover:scale-110 rounded-md h-48 w-full"
-                                @click="loadArticle(article.id)"
-                            >
+                            <ResponsiveNavLink :href="`/article/${article.id}`">
+                                <img 
+                                    :src="getImgPath(article.photo)" 
+                                    :alt="article.alt" 
+                                    class="cursor-pointer hover:scale-110 rounded-md h-48 w-full"
+                                >
+                            </ResponsiveNavLink>
 
-                            <h5 
-                                class="cursor-pointer hover:underline hover:underline-offset-4 w-33" 
-                                @click="loadArticle(article.id)"
-                            >{{ article.title }}</h5>   
+                            <ResponsiveNavLink :href="`/article/${article.id}`">
+                                <h5 
+                                    class="cursor-pointer hover:underline hover:underline-offset-4 w-33" 
+                                >{{ article.title }}</h5>   
+                            </ResponsiveNavLink>
 
                         </article>
 
@@ -130,19 +133,13 @@ export default {
                     <div class="flex justify-end w-full">
 
                         <div class="flex gap-2">
-                            <img 
-                                src="../../../public/assets/little-arrow-left.svg" 
-                                alt="petite flèche à gauche" 
-                                class="cursor-pointer"
-                                @click="previousNewsPage"
-                            >
+                            <button name="articleLeftArrowNav" @click="previousNewsPage">
+                                <img src="../../../public/assets/little-arrow-left.svg" alt="petite flèche à gauche">
+                            </button>
                             <p>{{ newsCurrentPage+1 }}/{{ articleSubList.length }}</p>
-                            <img 
-                                src="../../../public/assets/little-arrow-right.svg" 
-                                alt="petite flèche à droite" 
-                                class="cursor-pointer"
-                                @click="nextNewsPage"
-                            >
+                            <button name="articleRightArrowNav" @click="nextNewsPage">
+                                <img src="../../../public/assets/little-arrow-right.svg" alt="petite flèche à droite">
+                            </button>
                         </div>
 
                     </div>
