@@ -26,6 +26,11 @@ export default {
             type: String,
             default: 'absolute',
         },
+
+        ticketsCount: {
+            type: Number,
+            default: 0,
+        }
     },
 
     data() {
@@ -66,8 +71,9 @@ export default {
                 <img 
                     src="../../../public/assets/shopping-basket.svg" 
                     alt="panier d'achat" 
-                    class="cursor-pointer bg-white rounded-full p-2 hover:bg-amber-200 transition ease-in-out duration-300"
+                    class="cursor-pointer bg-white rounded-full p-2 hover:bg-amber-200 transition ease-in-out duration-300 relative"
                 >
+                <span v-if="ticketsCount > 0" class="flex justify-center items-center rounded-full bg-orange-400 w-[20px] h-[20px] absolute bottom-8 left-14">{{ ticketsCount }}</span>
             </ResponsiveNavLink>
 
             <ResponsiveNavLink 

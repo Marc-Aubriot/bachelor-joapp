@@ -16,11 +16,15 @@ export default {
     },
 
     props: {
-        ticketList: {
+        tickets: {
             type: Array,
             required: false,
-            default: "hello"
+            default: []
         },
+        ticketlist: {
+            type: Array,
+            default: [],
+        }
     },
 
     data() {
@@ -47,7 +51,7 @@ export default {
     <div class="h-fit w-full overflow-hidden">
 
         <div class="h-screen w-full relative">
-            <Header></Header>
+            <Header :ticketsCount="ticketlist ? ticketlist.length : 0"></Header>
 
             <img src="../../../public/assets/stade-de-france.jpg" alt="Drapeau des jeux olympiques de Paris 2024" class="object-cover h-full w-full">
 
@@ -71,7 +75,7 @@ export default {
                     <div class="border-t-black border-t py-8 flex flex-col md:flex-row md:justify-between w-full gap-10">
 
                         <TicketCard 
-                            v-for="(ticket, index) in ticketList"
+                            v-for="(ticket, index) in tickets"
                             :id="ticket.id"
                             :title="ticket.title" 
                             :photo="ticket.photo"
@@ -79,6 +83,7 @@ export default {
                             :description="ticket.description"
                             :color="ticket.color"
                             :stripeItemPrice="ticket.stripe_item_price"
+                            :index=index
                         ></TicketCard>
 
                     </div>

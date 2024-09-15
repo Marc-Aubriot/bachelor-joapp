@@ -74,7 +74,7 @@
     };
 
     async function getDatas(ticketCode) {
-        //const url = "http://127.0.0.1:8000/admin/ticket-scanner"; // LOCAL
+        // const url = "http://127.0.0.1:8000/admin/ticket-scanner"; // LOCAL
         const url = "https://dev4a.online/admin/ticket-scanner"; // PROD
         try {
             const response = await fetch(url, {
@@ -115,7 +115,7 @@
     };
 
     async function validateTicket(ticketCode) {
-        //const url = "http://127.0.0.1:8000/admin/ticket-scanner/validate"; // LOCAL
+        // const url = "http://127.0.0.1:8000/admin/ticket-scanner/validate"; // LOCAL
         const url = "https://dev4a.online/admin/ticket-scanner/validate"; // PROD
         try {
             const response = await fetch(url, {

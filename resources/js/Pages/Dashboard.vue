@@ -6,6 +6,7 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import Profile from './Profile/Profile.vue';
 import { router } from '@inertiajs/vue3';
 import MyTickets from './Profile/MyTickets.vue';
+import MyOrders from './Profile/MyOrders.vue';
 
 export default {
     name: 'Dashboard',
@@ -17,6 +18,7 @@ export default {
         ResponsiveNavLink,
         Profile,
         MyTickets,
+        MyOrders,
     },
 
     props: {
@@ -24,10 +26,18 @@ export default {
             type: Array,
             default: [],
         },
+        orders: {
+            type: Array,
+            default: [],
+        },
         section: {
             type: String,
             default: null,
         },
+        ticketlist: {
+            type: Array,
+            default: []
+        }
     },
 
     data() {
@@ -54,7 +64,7 @@ export default {
     
     <main class="h-fit w-full overflow-hidden">
 
-        <Header opacity="bg-opacity-100" position="initial"></Header>
+        <Header opacity="bg-opacity-100" :ticketsCount="ticketlist ? ticketlist.length : 0"></Header>
 
         <section id="billets" class="flex justify-center h-fit w-full py-16 overflow-hidden">
 
@@ -63,9 +73,9 @@ export default {
                 <h1 class="text-4xl">Dashboard</h1>
                 <div class="border-t-black border-t w-full"></div>
 
-                <div class="flex flex-col w-full h-fit justify-between">
+                <div class="flex flex-col md:flex-row w-full h-fit justify-between">
 
-                    <div class="py-8 flex flex-col md:flex-row md:justify-between w-fit md:w-1/6 h-full gap-10">
+                    <div class="py-8 flex flex-col md:flex-row w-full md:justify-between md:w-1/6 h-full gap-10">
 
                         <ul class="flex flex-col gap-2 p-4 w-full h-fit border rounded-md border-black">
                             <li :class="currentPage == 'profile' ? 'underline underline-offset-8 cursor-pointer':'hover:underline underline-offset-8 cursor-pointer'" @click="currentPage='profile'">
@@ -89,6 +99,7 @@ export default {
                         <div class="flex flex-col gap-2 items-center w-full h-full">
                             <Profile v-if="currentPage == 'profile'"/>
                             <MyTickets v-if="currentPage == 'tickets'" :tickets="tickets"/>
+                            <MyOrders v-if="currentPage == 'orders'" :orders="orders"/>
                         </div>
 
                     </div>

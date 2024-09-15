@@ -48,6 +48,7 @@ const submit = () => {
                             v-model="form.firstname"
                             type="text"
                             class="mt-1 block w-full"
+                            name="firstname"
                             required
                             autofocus
                             autocomplete="name"
@@ -62,6 +63,7 @@ const submit = () => {
                             v-model="form.lastname"
                             type="text"
                             class="mt-1 block w-full"
+                            name="lastname"
                             required
                             autofocus
                             autocomplete="name"
@@ -76,6 +78,7 @@ const submit = () => {
                             v-model="form.email"
                             type="email"
                             class="mt-1 block w-full"
+                            name="email"
                             required
                             autocomplete="username"
                         />
@@ -89,6 +92,7 @@ const submit = () => {
                             v-model="form.password"
                             type="password"
                             class="mt-1 block w-full"
+                            name="password1"
                             required
                             autocomplete="new-password"
                         />
@@ -102,6 +106,7 @@ const submit = () => {
                             v-model="form.password_confirmation"
                             type="password"
                             class="mt-1 block w-full"
+                            name="password2"
                             required
                             autocomplete="new-password"
                         />
@@ -126,7 +131,7 @@ const submit = () => {
                             Vous avez un compte?
                         </Link>
 
-                        <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                        <PrimaryButton class="ms-4" name="register" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                             S'enregistrer
                         </PrimaryButton>
                     </div>
